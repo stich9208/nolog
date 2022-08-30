@@ -1,15 +1,59 @@
 .container {
-  padding: 0 2rem;
+  padding: 0 3rem;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  min-height: 60px;
+  padding: 0 2rem 0 2rem;
+  border: 0.3rem dashed cornflowerblue;
 }
 
 .main {
-  min-height: 100vh;
-  padding: 4rem 0;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-template-areas:
+    "info info info info info info"
+    "info info info info info info"
+    "articles articles recent_article recent_article recent_article recent_article"
+    "articles articles recent_article recent_article recent_article recent_article"
+    "projects projects projects portfolio portfolio portfolio"
+    "projects projects projects blank blank blank";
+  min-height: 90vh;
+  margin-top: 20px;
+  border-top: 0.3rem dashed cornflowerblue;
+  border-right: 0.3rem dashed cornflowerblue;
+}
+
+.main > div {
+  border-left: 0.3rem dashed cornflowerblue;
+  border-bottom: 0.3rem dashed cornflowerblue;
+}
+
+.info {
+  grid-area: info;
+}
+
+.articles {
+  grid-area: articles;
+}
+
+.recent_article {
+  grid-area: recent_article;
+}
+
+.projects {
+  grid-area: projects;
+}
+
+.portfolio {
+  grid-area: portfolio;
+}
+
+.blank {
+  grid-area: blank;
 }
 
 .footer {
