@@ -1,5 +1,5 @@
 .container {
-  padding: 0 3rem;
+  /* padding: 1rem 5rem; */
 }
 
 .nav {
@@ -10,6 +10,7 @@
   min-height: 60px;
   padding: 0 2rem 0 2rem;
   border: 0.3rem dashed cornflowerblue;
+  border-bottom: none;
 }
 
 .main {
@@ -22,12 +23,14 @@
     "projects projects projects portfolio portfolio portfolio"
     "projects projects projects blank blank blank";
   min-height: 90vh;
-  margin-top: 20px;
   border-top: 0.3rem dashed cornflowerblue;
   border-right: 0.3rem dashed cornflowerblue;
 }
 
 .main > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-left: 0.3rem dashed cornflowerblue;
   border-bottom: 0.3rem dashed cornflowerblue;
 }
