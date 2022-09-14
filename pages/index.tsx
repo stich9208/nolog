@@ -4,26 +4,40 @@ import Image from "next/image";
 import styles from "../styles/Home.module.css";
 
 const Home: NextPage = () => {
-  // secret_WI9F9EOtxQCiCdM7eUNGBxL1LSNEqELUxmTkl7YYm52v
-
   return (
     <div className={styles.container}>
       <Head>
         <title>blog</title>
         <meta name="description" content="blog" />
         <link rel="icon" href="/favicon.ico" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Nabla&display=swap"
+          rel="stylesheet"
+        />
       </Head>
       <nav className={styles.nav}>
-        <div>list</div>
-        <div>search</div>
+        <div>LIST</div>
+        <div>SEARCH</div>
       </nav>
       <main className={styles.main}>
-        <div className={styles.info}>item1</div>
-        <div className={styles.articles}>item1</div>
-        <div className={styles.recent_article}>item1</div>
-        <div className={styles.projects}>item1</div>
-        <div className={styles.portfolio}>item1</div>
-        <div className={styles.blank}>item1</div>
+        <div className={styles.info}>
+          <div>ABOUT</div>
+        </div>
+        <div className={styles.articles}>
+          <div>ARTICLES</div>
+        </div>
+        <div className={styles.recent_article}>
+          <div>RECENT ARTICLE</div>
+        </div>
+        <div className={styles.projects}>
+          <div>PROJECTS</div>
+        </div>
+        <div className={styles.portfolio}>
+          <div>PORTFOLIO</div>
+        </div>
+        <div className={styles.blank}>
+          <div>item1</div>
+        </div>
       </main>
       <footer className={styles.footer}>
         <a
@@ -31,7 +45,7 @@ const Home: NextPage = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{" "}
+          Powered by
           <span className={styles.logo}>
             <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
           </span>

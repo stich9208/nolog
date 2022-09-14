@@ -1,5 +1,9 @@
 .container {
   /* padding: 1rem 5rem; */
+  height: 100vh;
+  font-family: "Do Hyeon", "Nabla", cursive;
+  /* font-family: "Nabla", cursive; */
+  color: navy;
 }
 
 .nav {
@@ -7,32 +11,55 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  min-height: 60px;
+  height: 6%;
   padding: 0 2rem 0 2rem;
-  border: 0.3rem dashed cornflowerblue;
+  border: 5px solid navy;
   border-bottom: none;
+  font-size: max(2vw, 23px);
+  /* text-shadow: -10px 5px #f7b449; */
+}
+
+.nav > div:hover {
+  transform: scale(1.2);
+  transition: all 0.1s linear;
+  cursor: pointer;
 }
 
 .main {
   display: grid;
   grid-template-areas:
     "info info info info info info"
-    "info info info info info info"
     "articles articles recent_article recent_article recent_article recent_article"
     "articles articles recent_article recent_article recent_article recent_article"
     "projects projects projects portfolio portfolio portfolio"
     "projects projects projects blank blank blank";
-  min-height: 90vh;
-  border-top: 0.3rem dashed cornflowerblue;
-  border-right: 0.3rem dashed cornflowerblue;
+  height: 94%;
+  border-top: 5px solid navy;
+  border-right: 5px solid navy;
+  overflow: hidden;
+  font-size: min(7vw, 80px);
+  /* text-shadow: -50px 30px #f7b449; */
 }
 
 .main > div {
+  border-left: 5px solid navy;
+  border-bottom: 5px solid navy;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.main > div > div {
   display: flex;
   justify-content: center;
   align-items: center;
-  border-left: 0.3rem dashed cornflowerblue;
-  border-bottom: 0.3rem dashed cornflowerblue;
+  width: 100%;
+  height: 100%;
+  background-color: whitesmoke;
+}
+
+.main > div > div:hover {
+  transform: scale(1.2);
+  transition: all 0.2s ease-in-out;
 }
 
 .info {
@@ -45,6 +72,7 @@
 
 .recent_article {
   grid-area: recent_article;
+  white-space: pre-line;
 }
 
 .projects {
@@ -63,7 +91,7 @@
   display: flex;
   flex: 1;
   padding: 2rem 0;
-  border-top: 1px solid #eaeaea;
+  border-top: 5px solid navy;
   justify-content: center;
   align-items: center;
 }
@@ -126,7 +154,7 @@
   text-align: left;
   color: inherit;
   text-decoration: none;
-  border: 1px solid #eaeaea;
+  border: 5px solid navy;
   border-radius: 10px;
   transition: color 0.15s ease, border-color 0.15s ease;
   max-width: 300px;
