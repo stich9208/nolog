@@ -29,21 +29,22 @@
   display: grid;
   grid-template-areas:
     "info info info info info info"
+    "info info info info info info"
     "articles articles recent_article recent_article recent_article recent_article"
     "articles articles recent_article recent_article recent_article recent_article"
     "projects projects projects portfolio portfolio portfolio"
     "projects projects projects blank blank blank";
-  height: 94%;
-  border-top: 5px solid navy;
-  border-right: 5px solid navy;
+  height: 100%;
+  border-top: 8px solid navy;
+  border-right: 8px solid navy;
   overflow: hidden;
   font-size: min(7vw, 80px);
   /* text-shadow: -50px 30px #f7b449; */
 }
 
 .main > div {
-  border-left: 5px solid navy;
-  border-bottom: 5px solid navy;
+  border-left: 8px solid navy;
+  border-bottom: 8px solid navy;
   cursor: pointer;
   overflow: hidden;
 }
@@ -63,7 +64,29 @@
 }
 
 .info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 55px;
   grid-area: info;
+}
+.info > span {
+  animation: fadeInOut 5s ease-in-out infinite;
+}
+
+@keyframes fadeInOut {
+  0% {
+    visibility: hidden;
+    opacity: 0;
+  }
+  50% {
+    visibility: visible;
+    opacity: 1;
+  }
+  100% {
+    visibility: hidden;
+    opacity: 0;
+  }
 }
 
 .articles {
