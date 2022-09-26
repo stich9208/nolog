@@ -71,7 +71,7 @@
   grid-area: info;
 }
 .info > span {
-  animation: fadeInOut 5s ease-in-out infinite;
+  animation: fadeInOut 7s ease-in-out infinite;
 }
 
 @keyframes fadeInOut {
