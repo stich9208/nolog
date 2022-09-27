@@ -44,7 +44,13 @@ const Home: NextPage = () => {
         <div className={styles.info}>
           <span>{WELCOME_TEXT_LIST[textIndex]}</span>
         </div>
-        <div className={styles.articles}>
+        <div
+          className={styles.articles}
+          onMouseOver={(e) => {
+            const { currentTarget } = e;
+            currentTarget.className = styles.background;
+          }}
+        >
           <div>ARTICLES</div>
         </div>
         <div className={styles.recent_article}>
@@ -53,11 +59,11 @@ const Home: NextPage = () => {
         <div className={styles.projects}>
           <div>PROJECTS</div>
         </div>
-        <div className={styles.portfolio}>
-          <div>PORTFOLIO</div>
+        <div className={styles.resume}>
+          <div>RESUME</div>
         </div>
-        <div className={styles.blank}>
-          <div>item1</div>
+        <div className={styles.contact}>
+          <div>CONTACT</div>
         </div>
       </main>
       {/* <footer className={styles.footer}>
