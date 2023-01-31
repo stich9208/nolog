@@ -1,9 +1,12 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import { useState, useEffect, useRef } from "react";
+import { useRouter } from "next/router";
+import { useEffect, useRef, useState } from "react";
+
 import styles from "../styles/Home.module.css";
 
 const Home: NextPage = () => {
+  const router = useRouter();
   //constant state
   const WELCOME_TEXT_LIST = [
     "안녕하세요 프론트엔드 개발자 정재욱입니다",
@@ -36,48 +39,30 @@ const Home: NextPage = () => {
           rel="stylesheet"
         />
       </Head>
-      {/* <nav className={styles.nav}>
-        <div>LIST</div>
-        <div>SEARCH</div>
-      </nav> */}
       <main className={styles.main}>
         <div className={styles.info}>
           <span>{WELCOME_TEXT_LIST[textIndex]}</span>
         </div>
         <div
           className={styles.articles}
-          onMouseOver={(e) => {
-            const { currentTarget } = e;
-            currentTarget.className = styles.background;
-          }}
+          onClick={() => router.push("/articles")}
         >
           <div>ARTICLES</div>
         </div>
-        <div className={styles.recent_article}>
-          <div>RECENT ARTICLE</div>
+        <div className={styles.resume}>
+          <div>RESUME</div>
         </div>
+
         <div className={styles.projects}>
           <div>PROJECTS</div>
         </div>
-        <div className={styles.resume}>
-          <div>RESUME</div>
+        <div className={styles.other}>
+          <div>OTHER WORKS</div>
         </div>
         <div className={styles.contact}>
           <div>CONTACT</div>
         </div>
       </main>
-      {/* <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-      </footer> */}
     </div>
   );
 };

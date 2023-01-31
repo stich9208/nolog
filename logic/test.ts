@@ -1,37 +1,37 @@
 import { Client } from "@notionhq/client";
 
-const notion = new Client({
-  auth: process.env.NOTION_TOKEN,
-});
+// const notion = new Client({
+//   auth: "secret_ist5G9aOkGCCTzVPhtFeLCPpWZRKkcNjy8scIkzaFjG",
+// });
 
-export const getDatabase = async (databaseId: any) => {
-  const response = await notion.databases.query({
-    database_id: databaseId,
-  });
-  return response.results;
-};
+// export const getDatabase = async (databaseId: any) => {
+//   const response = await notion.databases.query({
+//     database_id: databaseId,
+//   });
+//   return response.results;
+// };
 
-export const getPage = async (pageId: any) => {
-  const response = await notion.pages.retrieve({ page_id: pageId });
-  return response;
-};
+// export const getPage = async (pageId: any) => {
+//   const response = await notion.pages.retrieve({ page_id: pageId });
+//   return response;
+// };
 
-export const getBlocks = async (blockId: any) => {
-  const blocks = [];
-  let cursor;
-  while (true) {
-    const { results, next_cursor }: any = await notion.blocks.children.list({
-      start_cursor: cursor,
-      block_id: blockId,
-    });
-    blocks.push(...results);
-    if (!next_cursor) {
-      break;
-    }
-    cursor = next_cursor;
-  }
-  return blocks;
-};
+// export const getBlocks = async (blockId: any) => {
+//   const blocks = [];
+//   let cursor;
+//   while (true) {
+//     const { results, next_cursor }: any = await notion.blocks.children.list({
+//       start_cursor: cursor,
+//       block_id: blockId,
+//     });
+//     blocks.push(...results);
+//     if (!next_cursor) {
+//       break;
+//     }
+//     cursor = next_cursor;
+//   }
+//   return blocks;
+// };
 
 // const renderNestedList = (block) => {
 //   const { type } = block;

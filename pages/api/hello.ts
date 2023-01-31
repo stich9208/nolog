@@ -1,13 +1,15 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import type { NextApiRequest, NextApiResponse } from 'next'
+import type { NextApiRequest, NextApiResponse } from "next";
 
-type Data = {
-  name: string
-}
+const { Client } = require("@notionhq/client");
 
-export default function handler(
+const notion = new Client({
+  auth: process.env.NOTION_TOKEN,
+});
+
+export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Data>
+  res: NextApiResponse
 ) {
-  res.status(200).json({ name: 'John Doe' })
+  const users: any = await notion.users.list({});
+  res.status(200).json({ users });
 }

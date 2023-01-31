@@ -31,9 +31,9 @@
     "info info info info info info"
     "info info info info info info"
     "info info info info info info"
-    "articles articles recent_article recent_article recent_article recent_article"
-    "articles articles recent_article recent_article recent_article recent_article"
-    "projects projects projects resume resume resume"
+    "articles articles resume resume resume resume"
+    "articles articles resume resume resume resume"
+    "projects projects projects other other other"
     "projects projects projects contact contact contact";
   height: 100%;
   border-top: 10px solid navy;
@@ -114,8 +114,8 @@
   grid-area: articles;
 }
 
-.recent_article {
-  grid-area: recent_article;
+.other {
+  grid-area: other;
   white-space: pre-line;
 }
 
