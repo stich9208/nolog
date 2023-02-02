@@ -29,15 +29,15 @@ const Home: NextPage = () => {
     setTextIndex((index) => (index + 1) % WELCOME_TEXT_LIST.length);
 
   return (
-    <div className={styles.container}>
+    <div className="h-screen text-navy">
       <Head>
         <title>blog</title>
         <meta name="description" content="blog" />
         <link rel="icon" href="/favicon.ico" />
-        <link
+        {/* <link
           href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Nabla&display=swap"
           rel="stylesheet"
-        />
+        /> */}
       </Head>
       <main className={styles.main}>
         <div className={styles.info}>

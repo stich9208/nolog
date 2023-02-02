@@ -1,6 +1,7 @@
 import "../styles/globals.css";
-import type { AppProps } from "next/app";
+
 import { Do_Hyeon } from "@next/font/google";
+import type { AppProps } from "next/app";
 
 const doHyeon = Do_Hyeon({
   subsets: ["latin"],
