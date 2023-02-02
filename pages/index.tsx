@@ -39,8 +39,8 @@ const Home: NextPage = () => {
           rel="stylesheet"
         /> */}
       </Head>
-      <main className={styles.main}>
-        <div className={styles.info}>
+      <main className="grid-rows-7 grid h-full grid-cols-6 overflow-hidden border-t-10 border-r-10 border-solid border-navy text-mainFontSize">
+        <div className="border-5 col-span-6 row-span-3">
           <span>{WELCOME_TEXT_LIST[textIndex]}</span>
         </div>
         <div

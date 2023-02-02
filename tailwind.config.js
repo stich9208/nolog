@@ -5,11 +5,20 @@ module.exports = {
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
+
   theme: {
-    colors: {
-      navy: "#000080",
+    borderWidth: {
+      10: "10px",
     },
-    extend: {},
+    fontSize: {
+      mainFontSize: "min(7vw, 70px)",
+    },
+    extend: {
+      colors: {
+        navy: "#000080",
+      },
+    },
   },
+
   plugins: [],
 };
