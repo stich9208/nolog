@@ -3,8 +3,6 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 
-import styles from "../styles/Home.module.css";
-
 const Home: NextPage = () => {
   const router = useRouter();
   //constant state
@@ -39,28 +37,36 @@ const Home: NextPage = () => {
           rel="stylesheet"
         /> */}
       </Head>
-      <main className="grid-rows-7 grid h-full grid-cols-6 overflow-hidden border-t-10 border-r-10 border-solid border-navy text-mainFontSize">
-        <div className="border-5 col-span-6 row-span-3">
-          <span>{WELCOME_TEXT_LIST[textIndex]}</span>
+      <main className="grid h-screen w-full grid-cols-6 grid-rows-7 overflow-hidden border-t-10 border-r-10 border-solid border-navy text-mainFontSize">
+        <div className="grid_div border-5 text-6xl col-span-6 row-span-3 flex cursor-default items-center justify-center text-introFontSize">
+          <span className="animate-[fadeInOut_7s_ease-in-out_infinite]">
+            {WELCOME_TEXT_LIST[textIndex]}
+          </span>
         </div>
         <div
-          className={styles.articles}
+          className="grid_div col-span-2 col-start-1 row-span-2 row-start-4"
           onClick={() => router.push("/articles")}
         >
-          <div>ARTICLES</div>
+          <div className="grid_div_div">ARTICLES</div>
         </div>
-        <div className={styles.resume}>
-          <div>RESUME</div>
+        <div
+          className="grid_div col-span-4 col-start-3 row-span-2 row-start-4"
+          onClick={() => router.push("/resume")}
+        >
+          <div className="grid_div_div">RESUME</div>
         </div>
 
-        <div className={styles.projects}>
-          <div>PROJECTS</div>
+        <div
+          className="grid_div col-span-3 col-start-1 row-span-2 row-start-6"
+          onClick={() => router.push("/projects")}
+        >
+          <div className="grid_div_div">PROJECTS</div>
         </div>
-        <div className={styles.other}>
-          <div>OTHER WORKS</div>
+        <div className="grid_div col-span-3 col-start-4 row-span-1 row-start-6">
+          <div className="grid_div_div">OTHER WORKS</div>
         </div>
-        <div className={styles.contact}>
-          <div>CONTACT</div>
+        <div className="grid_div col-span-3 col-start-4 row-span-1 row-start-7">
+          <div className="grid_div_div">CONTACT</div>
         </div>
       </main>
     </div>
