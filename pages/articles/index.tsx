@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 
 const Articles = () => {
   useEffect(() => {
-    fetch("api/hello")
+    fetch("api/article/list")
       .then((res) => res.json())
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
