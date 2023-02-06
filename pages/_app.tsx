@@ -2,6 +2,7 @@ import "../styles/globals.css";
 
 import { Do_Hyeon } from "@next/font/google";
 import type { AppProps } from "next/app";
+import { RecoilRoot } from "recoil";
 
 const doHyeon = Do_Hyeon({
   subsets: ["latin"],
@@ -12,7 +13,9 @@ const doHyeon = Do_Hyeon({
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <main className={doHyeon.className}>
-      <Component {...pageProps} />
+      <RecoilRoot>
+        <Component {...pageProps} />
+      </RecoilRoot>
     </main>
   );
 }
