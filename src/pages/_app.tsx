@@ -3,6 +3,7 @@ import "../styles/globals.css";
 import { Do_Hyeon } from "@next/font/google";
 import type { AppProps } from "next/app";
 import { RecoilRoot } from "recoil";
+import { SWRConfig } from "swr";
 
 const doHyeon = Do_Hyeon({
   subsets: ["latin"],
