@@ -30,8 +30,10 @@ const Articles = ({ articleList }: any) => {
         {!articleList ? (
           <div>Loading...</div>
         ) : (
-          <div>
-            <ListView list={articleList} />
+          <div className="flex w-screen justify-center">
+            <div className="w-full max-w-[550px]">
+              <ListView list={articleList} />
+            </div>
           </div>
         )}
       </main>
