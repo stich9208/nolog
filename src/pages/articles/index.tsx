@@ -1,24 +1,21 @@
-import { Client } from "@notionhq/client";
-import { GetServerSideProps } from "next";
+import { GetStaticProps } from "next";
 import Head from "next/head";
 import React, { useEffect } from "react";
 import { useSetRecoilState } from "recoil";
-import useSWR from "swr";
 
-import SwrComponent from "../../components/common/SwrComponent";
+import Header from "../../components/common/Header";
+import ListView from "../../components/molecule/ListView";
 import { articleListState } from "../../recoil/atom";
-import { getFetcher } from "../../util/fetcher";
+import { getArticleList } from "../../util/controller";
 
-const Articles = () => {
-  const { data, error, isLoading } = useSWR("api/article/list", getFetcher);
-
+const Articles = ({ articleList }: any) => {
   //recoil
   const setArticleList = useSetRecoilState(articleListState);
 
   //useEffect
   useEffect(() => {
-    setArticleList(data);
-  }, [data]);
+    setArticleList(articleList);
+  }, [articleList]);
 
   return (
     <div>
@@ -29,17 +26,12 @@ const Articles = () => {
       </Head>
 
       <main>
-        {isLoading ? (
+        <Header pageName={"Articles"} />
+        {!articleList ? (
           <div>Loading...</div>
         ) : (
           <div>
-            <ul>
-              {data.map((article: any) => (
-                <li key={article.id}>
-                  {article.properties.Name.title[0].plain_text}
-                </li>
-              ))}
-            </ul>
+            <ListView list={articleList} />
           </div>
         )}
       </main>
@@ -47,32 +39,16 @@ const Articles = () => {
   );
 };
 
-const SwrWrapper = ({ fallback }: any) => {
-  return (
-    <SwrComponent fallback={fallback}>
-      <Articles />
-    </SwrComponent>
-  );
-};
-
-export const getServerSideProps: GetServerSideProps = async () => {
-  const { NOTION_TOKEN, NOTION_ARTICLE_DB_ID } = process.env;
-
-  const notion = new Client({
-    auth: "ug",
-  });
-
+export const getStaticProps: GetStaticProps = async () => {
   try {
-    const results: any = await notion.databases.query({
-      database_id: `${NOTION_ARTICLE_DB_ID}`,
-    });
-    const articleList = await results.results;
+    const articleList = await getArticleList();
     return {
-      props: { fallback: { "api/article/list": articleList, error: false } },
+      props: { articleList },
     };
   } catch (error) {
-    return { props: { fallback: { "api/article/list": null, error: true } } };
+    console.log(error);
+    return { notFound: true };
   }
 };
 
-export default SwrWrapper;
+export default Articles;

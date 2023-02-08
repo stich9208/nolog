@@ -7,8 +7,8 @@ module.exports = {
 
   theme: {
     fontSize: {
-      mainFontSize: "min(7vw, 70px)",
-      introFontSize: "60px",
+      mainFontSize: "min(7vw, 50px)",
+      introFontSize: "min(7vw, 30px)",
     },
     extend: {
       keyframes: {
