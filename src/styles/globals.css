@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  body {
+    @apply box-border;
+  }
+}
+
 @layer components {
   .grid_div {
     @apply cursor-pointer overflow-hidden border-l-10 border-b-10 border-navy;

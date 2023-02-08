@@ -11,7 +11,9 @@ const ListView = ({ list }: { list: any[] }) => {
             key={article.id}
             className="mx-[10px] my-[20px] flex min-h-[70px] cursor-pointer flex-col justify-between border-b-[3px] border-t-[3px] border-navy font-bold text-navy"
           >
-            <div>{article.properties.Name.title[0].plain_text}</div>
+            <div className="text-[1.2rem]">
+              {article.properties.Name.title[0].plain_text}
+            </div>
             <div className="flex items-end justify-end">
               {`${createdDate.getFullYear()}-${createdDate.getMonth()}-${createdDate.getDate()}`}
             </div>

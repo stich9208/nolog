@@ -25,7 +25,7 @@ const Articles = ({ articleList }: any) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
+      <main className="overflow-x-hidden ">
         <Header pageName={"Articles"} />
         {!articleList ? (
           <div>Loading...</div>

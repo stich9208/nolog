@@ -2,8 +2,8 @@ import React from "react";
 
 const Header = ({ pageName }: { pageName: string }) => {
   return (
-    <header className="flex w-screen items-center justify-center bg-navy">
-      <span className="w-auto text-white">{pageName}</span>
+    <header className="flex h-[50px] w-[100vw] items-center justify-center bg-navy">
+      <span className="w-auto text-[35px] text-white">{pageName}</span>
     </header>
   );
 };
