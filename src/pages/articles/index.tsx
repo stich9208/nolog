@@ -1,6 +1,7 @@
 import { GetStaticProps } from "next";
 import Head from "next/head";
-import React, { useEffect } from "react";
+import { useRouter } from "next/router";
+import React, { MouseEvent, useEffect } from "react";
 import { useSetRecoilState } from "recoil";
 
 import Header from "../../components/common/Header";
@@ -9,11 +10,12 @@ import { articleListState } from "../../recoil/atom";
 import { getArticleList } from "../../util/controller";
 
 const Articles = ({ articleList }: any) => {
+  // constant variable
   const ARTICLE_COLUMN = [
     {
       title: ["properties", "Name", "title", 0, "plain_text"],
       render: (elem: string) => (
-        <div className="text-[1.2rem] font-bold">{elem}</div>
+        <div className="text-[1.3rem] font-bold">{elem}</div>
       ),
     },
     {
@@ -28,14 +30,24 @@ const Articles = ({ articleList }: any) => {
       },
     },
   ];
+  const router = useRouter();
+
   //recoil
   const setArticleList = useSetRecoilState(articleListState);
 
   console.log(articleList);
+
   //useEffect
   useEffect(() => {
     setArticleList(articleList);
   }, [articleList]);
+
+  // functions
+  const onClickItem = (e: MouseEvent) => {
+    const { id } = e.currentTarget;
+    sessionStorage.setItem("page_id", id);
+    router.push("articles/detail");
+  };
 
   return (
     <div>
@@ -51,8 +63,12 @@ const Articles = ({ articleList }: any) => {
           <div>Loading...</div>
         ) : (
           <div className="flex w-screen justify-center">
-            <div className="w-full max-w-[550px]">
-              <ListView list={articleList} column={ARTICLE_COLUMN} />
+            <div className="w-full max-w-[700px]">
+              <ListView
+                list={articleList}
+                column={ARTICLE_COLUMN}
+                onClickItem={onClickItem}
+              />
             </div>
           </div>
         )}

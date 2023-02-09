@@ -1,13 +1,23 @@
-import React from "react";
+import React, { MouseEventHandler } from "react";
 
-const ListView = ({ list, column }: { list: any[]; column: any[] }) => {
+const ListView = ({
+  list,
+  column,
+  onClickItem,
+}: {
+  list: any[];
+  column: any[];
+  onClickItem: MouseEventHandler;
+}) => {
   return (
     <ul>
       {list.map((listElem) => {
         return (
           <li
             key={listElem.id}
-            className="mx-[10px] my-[20px] flex min-h-[70px] cursor-pointer flex-col justify-between border-b-[2px] border-t-[2px] border-navy font-bold text-navy"
+            id={listElem.id}
+            className="mx-[10px] my-[20px] flex min-h-[80px] cursor-pointer flex-col justify-between border-b-[2px] border-t-[2px] border-navy font-bold text-navy"
+            onClick={onClickItem}
           >
             {column.map((columnElem) => {
               const elem = columnElem.title.reduce(
