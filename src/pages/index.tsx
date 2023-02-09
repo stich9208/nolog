@@ -37,7 +37,7 @@ const Home: NextPage = () => {
           rel="stylesheet"
         /> */}
       </Head>
-      <main className="grid h-screen w-full grid-cols-6 grid-rows-7 overflow-hidden border-t-10 border-r-10 border-solid border-navy text-mainFontSize">
+      <main className="grid h-screen w-full grid-cols-6 grid-rows-7 overflow-hidden border-t-10 border-r-10 border-solid border-navy text-mainFontSize font-bold">
         <div className="grid_div border-5 text-6xl col-span-6 row-span-3 flex cursor-default items-center justify-center whitespace-pre-wrap break-keep text-center text-introFontSize">
           <span className="animate-[fadeInOut_7s_ease-in-out_infinite]">
             {WELCOME_TEXT_LIST[textIndex]}

@@ -9,9 +9,29 @@ import { articleListState } from "../../recoil/atom";
 import { getArticleList } from "../../util/controller";
 
 const Articles = ({ articleList }: any) => {
+  const ARTICLE_COLUMN = [
+    {
+      title: ["properties", "Name", "title", 0, "plain_text"],
+      render: (elem: string) => (
+        <div className="text-[1.2rem] font-bold">{elem}</div>
+      ),
+    },
+    {
+      title: ["created_time"],
+      render: (elem: string) => {
+        const createdDate = new Date(elem);
+        return (
+          <div className="flex items-end justify-end text-[0.6rem] font-light">
+            {`${createdDate.getFullYear()}-${createdDate.getMonth()}-${createdDate.getDate()}`}
+          </div>
+        );
+      },
+    },
+  ];
   //recoil
   const setArticleList = useSetRecoilState(articleListState);
 
+  console.log(articleList);
   //useEffect
   useEffect(() => {
     setArticleList(articleList);
@@ -32,7 +52,7 @@ const Articles = ({ articleList }: any) => {
         ) : (
           <div className="flex w-screen justify-center">
             <div className="w-full max-w-[550px]">
-              <ListView list={articleList} />
+              <ListView list={articleList} column={ARTICLE_COLUMN} />
             </div>
           </div>
         )}

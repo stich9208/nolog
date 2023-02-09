@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply box-border;
+    @apply box-border  bg-neutral-100;
   }
 }
 
@@ -13,6 +13,6 @@
     @apply cursor-pointer overflow-hidden border-l-10 border-b-10 border-navy;
   }
   .grid_div_div {
-    @apply flex h-full w-full items-center justify-center bg-neutral-100 text-[4.5vw] ease-in-out hover:scale-110 hover:transition-all hover:duration-1000;
+    @apply flex h-full w-full items-center justify-center text-[4.5vw] ease-in-out hover:scale-110 hover:transition-all hover:duration-1000;
   }
 }

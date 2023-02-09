@@ -1,22 +1,27 @@
 import "../styles/globals.css";
 
-import { Do_Hyeon } from "@next/font/google";
+import localFont from "@next/font/local";
 import type { AppProps } from "next/app";
 import { RecoilRoot } from "recoil";
 
-const doHyeon = Do_Hyeon({
-  subsets: ["latin"],
-  weight: "400",
-  style: "normal",
+const KIMM = localFont({
+  src: [
+    {
+      path: "../../public/font/KIMM_light.ttf",
+      weight: "300",
+      style: "normal",
+    },
+    { path: "../../public/font/KIMM_bold.ttf", weight: "700", style: "normal" },
+  ],
 });
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <main className={doHyeon.className}>
-      <RecoilRoot>
+    <RecoilRoot>
+      <main className={KIMM.className}>
         <Component {...pageProps} />
-      </RecoilRoot>
-    </main>
+      </main>
+    </RecoilRoot>
   );
 }
 
