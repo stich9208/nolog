@@ -23,8 +23,8 @@ const Header = () => {
           id={page.toLowerCase()}
           className={
             checkPathname(page)
-              ? "mr-[10px] w-auto cursor-pointer text-[35px] font-bold text-white"
-              : "mr-[10px] w-auto cursor-pointer text-[15px] font-light text-white"
+              ? "mr-[20px] w-auto cursor-pointer text-[35px] font-bold text-white"
+              : "mr-[20px] w-auto cursor-pointer text-[15px] font-light text-white"
           }
           onClick={onClickMenu}
         >
