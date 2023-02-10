@@ -4,6 +4,8 @@ import localFont from "@next/font/local";
 import type { AppProps } from "next/app";
 import { RecoilRoot } from "recoil";
 
+import Layout from "../components/common/Layout";
+
 const KIMM = localFont({
   src: [
     {
@@ -15,11 +17,17 @@ const KIMM = localFont({
   ],
 });
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps, ...appProps }: AppProps) {
   return (
     <RecoilRoot>
       <main className={KIMM.className}>
-        <Component {...pageProps} />
+        {appProps.router.pathname === "/" ? (
+          <Component {...pageProps} />
+        ) : (
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        )}
       </main>
     </RecoilRoot>
   );

@@ -32,10 +32,6 @@ const Home: NextPage = () => {
         <title>blog</title>
         <meta name="description" content="blog" />
         <link rel="icon" href="/favicon.ico" />
-        {/* <link
-          href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Nabla&display=swap"
-          rel="stylesheet"
-        /> */}
       </Head>
       <main className="grid h-screen w-full grid-cols-6 grid-rows-7 overflow-hidden border-t-10 border-r-10 border-solid border-navy text-mainFontSize font-bold">
         <div className="grid_div border-5 text-6xl col-span-6 row-span-3 flex cursor-default items-center justify-center whitespace-pre-wrap break-keep text-center text-introFontSize">
@@ -63,7 +59,7 @@ const Home: NextPage = () => {
           <div className="grid_div_div">PROJECTS</div>
         </div>
         <div className="grid_div col-span-3 col-start-4 row-span-1 row-start-6">
-          <div className="grid_div_div">OTHER WORKS</div>
+          <div className="grid_div_div">OTHER</div>
         </div>
         <div className="grid_div col-span-3 col-start-4 row-span-1 row-start-7">
           <div className="grid_div_div">CONTACT</div>

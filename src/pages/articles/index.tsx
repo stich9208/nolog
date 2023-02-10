@@ -4,7 +4,6 @@ import { useRouter } from "next/router";
 import React, { MouseEvent, useEffect } from "react";
 import { useSetRecoilState } from "recoil";
 
-import Header from "../../components/common/Header";
 import ListView from "../../components/molecule/ListView";
 import { articleListState } from "../../recoil/atom";
 import { getArticleList } from "../../util/controller";
@@ -57,8 +56,7 @@ const Articles = ({ articleList }: any) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="overflow-x-hidden ">
-        <Header pageName={"Articles"} />
+      <div className="overflow-x-hidden ">
         {!articleList ? (
           <div>Loading...</div>
         ) : (
@@ -72,7 +70,7 @@ const Articles = ({ articleList }: any) => {
             </div>
           </div>
         )}
-      </main>
+      </div>
     </div>
   );
 };
