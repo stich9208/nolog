@@ -17,7 +17,7 @@ const KIMM = localFont({
   ],
 });
 
-function MyApp({ Component, pageProps, ...appProps }: AppProps) {
+const MyApp = ({ Component, pageProps, ...appProps }: AppProps) => {
   return (
     <RecoilRoot>
       <main className={KIMM.className}>
@@ -31,6 +31,6 @@ function MyApp({ Component, pageProps, ...appProps }: AppProps) {
       </main>
     </RecoilRoot>
   );
-}
+};
 
 export default MyApp;

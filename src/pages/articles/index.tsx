@@ -34,8 +34,6 @@ const Articles = ({ articleList }: any) => {
   //recoil
   const setArticleList = useSetRecoilState(articleListState);
 
-  console.log(articleList);
-
   //useEffect
   useEffect(() => {
     setArticleList(articleList);
@@ -44,8 +42,7 @@ const Articles = ({ articleList }: any) => {
   // functions
   const onClickItem = (e: MouseEvent) => {
     const { id } = e.currentTarget;
-    sessionStorage.setItem("page_id", id);
-    router.push("articles/detail");
+    router.push(`articles/${id}`);
   };
 
   return (
