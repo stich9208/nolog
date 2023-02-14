@@ -20,7 +20,7 @@ const KIMM = localFont({
 const MyApp = ({ Component, pageProps, ...appProps }: AppProps) => {
   return (
     <RecoilRoot>
-      <main className={KIMM.className}>
+      <main>
         {appProps.router.pathname === "/" ? (
           <Component {...pageProps} />
         ) : (

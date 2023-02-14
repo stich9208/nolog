@@ -3,6 +3,7 @@ import { Fragment } from "react";
 
 import Text from "../components/atom/Text";
 import styles from "../styles/Render.module.css";
+import { getBlocks } from "./controller";
 
 const renderNestedList = (block) => {
   const { type } = block;
@@ -17,11 +18,42 @@ const renderNestedList = (block) => {
   return <ul>{value.children.map((block) => renderBlock(block))}</ul>;
 };
 
+const renderTable = (value) => {
+  return (
+    <>
+      <thead>
+        <tr>
+          {value.children[0].table_row.cells.map((cell) => {
+            // eslint-disable-next-line react/jsx-key
+            return <td>{cell.map((cellText) => cellText.plain_text)}</td>;
+          })}
+        </tr>
+      </thead>
+      <tbody>
+        {value.children.map((child, idx) => {
+          if (idx > 0) {
+            return (
+              <tr key={idx}>
+                {child.table_row.cells.map((cell) => {
+                  // eslint-disable-next-line react/jsx-key
+                  return <td>{cell.map((cellText) => cellText.plain_text)}</td>;
+                })}
+              </tr>
+            );
+          }
+        })}
+      </tbody>
+    </>
+  );
+};
+
 export const renderBlock = (block) => {
   const { type, id } = block;
   const value = block[type];
 
   switch (type) {
+    case "table":
+      return <table>{renderTable(value)}</table>;
     case "paragraph":
       return (
         <p>

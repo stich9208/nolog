@@ -8,14 +8,14 @@ const notion = new Client({
 });
 
 // controllers
-export const getArticleList = async () => {
+export const getDatagbases = async () => {
   const results: any = await notion.databases.query({
     database_id: `${NOTION_ARTICLE_DB_ID}`,
   });
   return await results.results;
 };
 
-export const getEachArticle = async (blockId: any) => {
+export const getBlocks = async (blockId: any) => {
   const blocks = [];
   let cursor;
   while (true) {
@@ -29,5 +29,15 @@ export const getEachArticle = async (blockId: any) => {
     }
     cursor = next_cursor;
   }
+
+  for (let i = 0; i < blocks.length; i++) {
+    if (blocks[i].has_children) {
+      const { results } = await notion.blocks.children.list({
+        block_id: blocks[i].id,
+      });
+      blocks[i][blocks[i].type].children = results;
+    }
+  }
+
   return blocks;
 };

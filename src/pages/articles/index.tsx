@@ -6,7 +6,7 @@ import { useSetRecoilState } from "recoil";
 
 import ListView from "../../components/molecule/ListView";
 import { articleListState } from "../../recoil/atom";
-import { getArticleList } from "../../util/controller";
+import { getDatagbases } from "../../util/controller";
 
 const Articles = ({ articleList }: any) => {
   // constant variable
@@ -74,7 +74,7 @@ const Articles = ({ articleList }: any) => {
 
 export const getStaticProps: GetStaticProps = async () => {
   try {
-    const articleList = await getArticleList();
+    const articleList = await getDatagbases();
     return {
       props: { articleList },
     };

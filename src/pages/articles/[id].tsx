@@ -1,7 +1,7 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 import React from "react";
 
-import { getArticleList, getEachArticle } from "../../util/controller";
+import { getBlocks, getDatagbases } from "../../util/controller";
 import { renderBlock } from "../../util/render";
 
 const ArticleDetail = ({ article }: any) => {
@@ -10,7 +10,7 @@ const ArticleDetail = ({ article }: any) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const articleList = await getArticleList();
+  const articleList = await getDatagbases();
   const pathList = articleList.map((article: any) => ({
     params: { id: article.id },
   }));
@@ -24,7 +24,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const id: any = params?.id;
 
   try {
-    const article = await getEachArticle(id);
+    const article = await getBlocks(id);
     return { props: { article } };
   } catch (error) {
     console.log(error);
