@@ -1,53 +1,11 @@
 import Link from "next/link";
-import { Fragment } from "react";
+import React, { Fragment } from "react";
 
-import NTable from "../components/atom/NTable";
-import Text from "../components/atom/Text";
+import NTable from "../atom/NTable";
+import Text from "../atom/Text";
 import styles from "../styles/Render.module.css";
 
-const renderNestedList = (block) => {
-  const { type } = block;
-  const value = block[type];
-  if (!value) return null;
-
-  const isNumberedList = value.children[0].type === "numbered_list_item";
-
-  if (isNumberedList) {
-    return <ol>{value.children.map((block) => renderBlock(block))}</ol>;
-  }
-  return <ul>{value.children.map((block) => renderBlock(block))}</ul>;
-};
-
-const renderTable = (value) => {
-  return (
-    <>
-      <thead>
-        <tr>
-          {value.children[0].table_row.cells.map((cell) => {
-            // eslint-disable-next-line react/jsx-key
-            return <td>{cell.map((cellText) => cellText.plain_text)}</td>;
-          })}
-        </tr>
-      </thead>
-      <tbody>
-        {value.children.map((child, idx) => {
-          if (idx > 0) {
-            return (
-              <tr key={idx}>
-                {child.table_row.cells.map((cell) => {
-                  // eslint-disable-next-line react/jsx-key
-                  return <td>{cell.map((cellText) => cellText.plain_text)}</td>;
-                })}
-              </tr>
-            );
-          }
-        })}
-      </tbody>
-    </>
-  );
-};
-
-export const renderBlock = (block) => {
+const Block = ({ block }: any) => {
   const { type, id } = block;
   const value = block[type];
 
@@ -80,7 +38,6 @@ export const renderBlock = (block) => {
       );
     case "bulleted_list_item":
     case "numbered_list_item":
-      console.log(block);
       return (
         <li>
           <Text text={value.rich_text} />
@@ -161,3 +118,5 @@ export const renderBlock = (block) => {
       })`;
   }
 };
+
+export default Block;
