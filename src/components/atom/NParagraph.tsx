@@ -1,11 +1,11 @@
 import React from "react";
 
-import Text from "./Text";
+import NText from "./NText";
 
 const NParagraph = ({ value }: any) => {
   return (
     <p>
-      <Text text={value.rich_text} />
+      <NText text={value.rich_text} />
     </p>
   );
 };

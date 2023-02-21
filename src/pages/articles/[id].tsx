@@ -1,12 +1,17 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 import React from "react";
 
+import NBlock from "../../components/common/NBlock";
 import { getBlocks, getDatagbases } from "../../util/controller";
-import { renderBlock } from "../../util/render";
 
 const ArticleDetail = ({ article }: any) => {
-  console.log(article);
-  return <div>{article.map((elem: any) => renderBlock(elem))}</div>;
+  return (
+    <div>
+      {article.map((block: any) => (
+        <NBlock key={block.id} block={block} />
+      ))}
+    </div>
+  );
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {

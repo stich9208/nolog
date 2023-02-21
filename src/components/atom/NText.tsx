@@ -2,7 +2,7 @@ import React from "react";
 
 import styles from "../../styles/Render.module.css";
 
-const Text = ({ text }: any) => {
+const NText = ({ text }: any) => {
   if (!text) {
     return null;
   }
@@ -29,4 +29,4 @@ const Text = ({ text }: any) => {
   });
 };
 
-export default Text;
+export default NText;
