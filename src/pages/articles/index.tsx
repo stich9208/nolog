@@ -10,12 +10,27 @@ import { getDatagbases } from "../../util/controller";
 
 const Articles = ({ articleList }: any) => {
   // constant variable
+  const router = useRouter();
   const ARTICLE_COLUMN = [
     {
       title: ["properties", "Name", "title", 0, "plain_text"],
       render: (elem: string) => (
         <div className="text-[1.3rem] font-bold">{elem}</div>
       ),
+    },
+    {
+      title: ["properties", "Category", "select"],
+      render: (elem: any) => {
+        return (
+          <div className="flex items-end justify-end">
+            <span
+              className={`rounded bg-${elem.color}-400 px-[5px] text-[0.7rem]`}
+            >
+              {elem.name}
+            </span>
+          </div>
+        );
+      },
     },
     {
       title: ["created_time"],
@@ -29,7 +44,7 @@ const Articles = ({ articleList }: any) => {
       },
     },
   ];
-  const router = useRouter();
+  console.log(articleList);
 
   //recoil
   const setArticleList = useSetRecoilState(articleListState);
