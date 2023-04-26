@@ -44,7 +44,6 @@ const Articles = ({ articleList }: any) => {
       },
     },
   ];
-  console.log(articleList);
 
   //recoil
   const setArticleList = useSetRecoilState(articleListState);

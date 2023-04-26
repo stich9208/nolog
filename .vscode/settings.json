@@ -1,5 +1,4 @@
 {
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.codeActionsOnSave": { "source.fixAll.eslint": true },
-  "files.associations": { "*.css": "tailwindcss" }
+  "editor.codeActionsOnSave": { "source.fixAll.eslint": true }
 }
