@@ -9,7 +9,7 @@ const Home: NextPage = () => {
   const router = useRouter();
   //constant state
   const WELCOME_TEXT_LIST = [
-    "안녕하세요 프론트엔드 개발자 정재욱입니다",
+    "안녕하세요, 프론트엔드 개발자 정재욱입니다",
     "HELLO, I`M JAEWOOK JUNG, FRONTEND DEVELOPER",
   ];
   const callback = useRef(() => {});
@@ -39,14 +39,14 @@ const Home: NextPage = () => {
         <div className={styles.info}>
           <span>{WELCOME_TEXT_LIST[textIndex]}</span>
         </div>
+        <div className={styles.resume} onClick={() => router.push("/resume")}>
+          <div>RESUME</div>
+        </div>
         <div
           className={styles.articles}
           onClick={() => router.push("/articles")}
         >
           <div>ARTICLES</div>
-        </div>
-        <div className={styles.resume} onClick={() => router.push("/resume")}>
-          <div>RESUME</div>
         </div>
 
         <div

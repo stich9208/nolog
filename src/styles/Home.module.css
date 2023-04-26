@@ -1,8 +1,8 @@
 .container {
-  padding: 1rem 5rem;
-  height: 100vh;
-  /* font-family: "Do Hyeon", "Nabla", cursive; */
-  font-family: "Nabla", cursive;
+  display: flex;
+  justify-content: center;
+  /* padding: 1rem 5rem; */
+  height: calc(100vh - 20px);
   color: navy;
 }
 
@@ -31,10 +31,12 @@
     "info info info info info info"
     "info info info info info info"
     "info info info info info info"
-    "articles articles resume resume resume resume"
-    "articles articles resume resume resume resume"
+    "resume resume articles articles articles articles"
+    "resume resume articles articles articles articles"
     "projects projects projects other other other"
     "projects projects projects contact contact contact";
+  width: 100%;
+  max-width: 1800px;
   height: 100%;
   border-top: 10px solid navy;
   border-right: 10px solid navy;
@@ -44,6 +46,7 @@
 }
 
 .main > div {
+  font-size: 1em;
   border-left: 10px solid navy;
   border-bottom: 10px solid navy;
   cursor: pointer;
@@ -56,6 +59,9 @@
   align-items: center;
   width: 100%;
   height: 100%;
+
+  font-size: 1em;
+
   background-color: whitesmoke;
 }
 
@@ -88,8 +94,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 60px;
   grid-area: info;
+  width: 100%;
+  background-color: red;
+  padding: 10px;
+
+  white-space: pre-line;
+  word-break: keep-all;
+  line-height: 1.5em;
+  box-sizing: border-box;
 }
 .info > span {
   animation: fadeInOut 7s ease-in-out infinite;
