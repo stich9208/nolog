@@ -1,7 +1,6 @@
 .container {
   display: flex;
   justify-content: center;
-  /* padding: 1rem 5rem; */
   height: calc(100vh - 20px);
   color: navy;
 }
@@ -16,7 +15,6 @@
   border: 5px solid navy;
   border-bottom: none;
   font-size: max(2vw, 23px);
-  /* text-shadow: -10px 5px #f7b449; */
 }
 
 .nav > div:hover {
@@ -36,7 +34,7 @@
     "projects projects projects other other other"
     "projects projects projects contact contact contact";
   width: 100%;
-  max-width: 1800px;
+  /* max-width: 1800px; */
   height: 100%;
   border-top: 10px solid navy;
   border-right: 10px solid navy;
@@ -46,7 +44,8 @@
 }
 
 .main > div {
-  font-size: 1em;
+  font-size: 3vw;
+  font-weight: bold;
   border-left: 10px solid navy;
   border-bottom: 10px solid navy;
   cursor: pointer;
@@ -59,9 +58,7 @@
   align-items: center;
   width: 100%;
   height: 100%;
-
   font-size: 1em;
-
   background-color: whitesmoke;
 }
 
@@ -96,12 +93,9 @@
   align-items: center;
   grid-area: info;
   width: 100%;
-  background-color: red;
   padding: 10px;
-
-  white-space: pre-line;
+  white-space: nowrap;
   word-break: keep-all;
-  line-height: 1.5em;
   box-sizing: border-box;
 }
 .info > span {
@@ -160,7 +154,7 @@
   flex-grow: 1;
 }
 
-.title a {
+/* .title a {
   color: #0070f3;
   text-decoration: none;
 }
@@ -258,4 +252,4 @@
   .logo img {
     filter: invert(1);
   }
-}
+} */

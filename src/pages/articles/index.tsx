@@ -6,7 +6,7 @@ import { useSetRecoilState } from "recoil";
 
 import ListView from "../../components/molecule/ListView";
 import { articleListState } from "../../recoil/atom";
-import { getDatagbases } from "../../util/controller";
+import { getDatabases } from "../../util/controller";
 
 const Articles = ({ articleList }: any) => {
   // constant variable
@@ -14,22 +14,21 @@ const Articles = ({ articleList }: any) => {
   const ARTICLE_COLUMN = [
     {
       title: ["properties", "Name", "title", 0, "plain_text"],
-      render: (elem: string) => (
-        <div className="text-[1.3rem] font-bold">{elem}</div>
-      ),
+      render: (elem: string) => <div>{elem}</div>,
     },
     {
-      title: ["properties", "Category", "select"],
+      title: ["properties", "Category", "multi_select"],
       render: (elem: any) => {
-        return (
-          <div className="flex items-end justify-end">
-            <span
-              className={`rounded bg-${elem.color}-400 px-[5px] text-[0.7rem]`}
+        return elem.map((eachElem: any) => {
+          return (
+            <div
+              key={eachElem.id}
+              style={{ backgroundColor: `${eachElem.color}` }}
             >
-              {elem.name}
-            </span>
-          </div>
-        );
+              <span>{eachElem.name}</span>
+            </div>
+          );
+        });
       },
     },
     {
@@ -37,7 +36,7 @@ const Articles = ({ articleList }: any) => {
       render: (elem: string) => {
         const createdDate = new Date(elem);
         return (
-          <div className="flex items-end justify-end text-[0.6rem] font-light">
+          <div>
             {`${createdDate.getFullYear()}-${createdDate.getMonth()}-${createdDate.getDate()}`}
           </div>
         );
@@ -67,20 +66,16 @@ const Articles = ({ articleList }: any) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="overflow-x-hidden ">
-        {!articleList ? (
-          <div>Loading...</div>
-        ) : (
-          <div className="flex w-screen justify-center">
-            <div className="w-full max-w-[700px]">
-              <ListView
-                list={articleList}
-                column={ARTICLE_COLUMN}
-                onClickItem={onClickItem}
-              />
-            </div>
+      <div>
+        <div>
+          <div>
+            <ListView
+              list={articleList}
+              column={ARTICLE_COLUMN}
+              onClickItem={onClickItem}
+            />
           </div>
-        )}
+        </div>
       </div>
     </div>
   );
@@ -88,7 +83,7 @@ const Articles = ({ articleList }: any) => {
 
 export const getStaticProps: GetStaticProps = async () => {
   try {
-    const articleList = await getDatagbases();
+    const articleList = await getDatabases();
     return {
       props: { articleList },
     };

@@ -1,8 +1,10 @@
 import localFont from "@next/font/local";
 import type { AppProps } from "next/app";
+import { Suspense } from "react";
 import { RecoilRoot } from "recoil";
 
 import Layout from "../components/common/Layout";
+import Loading from "../components/common/Loading";
 
 const KIMM = localFont({
   src: [
@@ -17,17 +19,19 @@ const KIMM = localFont({
 
 const MyApp = ({ Component, pageProps, ...appProps }: AppProps) => {
   return (
-    <RecoilRoot>
-      <main>
-        {appProps.router.pathname === "/" ? (
-          <Component {...pageProps} />
-        ) : (
-          <Layout>
+    <Suspense fallback={<Loading />}>
+      <RecoilRoot>
+        <main>
+          {appProps.router.pathname === "/" ? (
             <Component {...pageProps} />
-          </Layout>
-        )}
-      </main>
-    </RecoilRoot>
+          ) : (
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+          )}
+        </main>
+      </RecoilRoot>
+    </Suspense>
   );
 };
 

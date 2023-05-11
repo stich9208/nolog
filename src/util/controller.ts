@@ -8,7 +8,7 @@ const notion = new Client({
 });
 
 // controllers
-export const getDatagbases = async () => {
+export const getDatabases = async () => {
   const results: any = await notion.databases.query({
     database_id: `${NOTION_ARTICLE_DB_ID}`,
   });

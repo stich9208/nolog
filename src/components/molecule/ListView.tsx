@@ -1,5 +1,7 @@
 import React, { MouseEventHandler } from "react";
 
+import styles from "../../styles/ListView.module.css";
+
 const ListView = ({
   list,
   column,
@@ -10,13 +12,13 @@ const ListView = ({
   onClickItem: MouseEventHandler;
 }) => {
   return (
-    <ul>
+    <ul className={styles.list_container}>
       {list.map((listElem) => {
         return (
           <li
             key={listElem.id}
             id={listElem.id}
-            className="mx-[10px] my-[20px] flex min-h-[80px] cursor-pointer flex-col justify-between border-b-[2px] border-t-[2px] border-navy font-bold text-navy"
+            className="each_article"
             onClick={onClickItem}
           >
             {column.map((columnElem) => {

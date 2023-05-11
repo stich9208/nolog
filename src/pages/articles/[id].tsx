@@ -2,7 +2,7 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import React from "react";
 
 import NBlock from "../../components/common/NBlock";
-import { getBlocks, getDatagbases } from "../../util/controller";
+import { getBlocks, getDatabases } from "../../util/controller";
 
 const ArticleDetail = ({ article }: any) => {
   return (
@@ -15,7 +15,7 @@ const ArticleDetail = ({ article }: any) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const articleList = await getDatagbases();
+  const articleList = await getDatabases();
   const pathList = articleList.map((article: any) => ({
     params: { id: article.id },
   }));
