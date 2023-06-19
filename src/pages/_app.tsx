@@ -1,3 +1,4 @@
+import { ChakraProvider } from "@chakra-ui/react";
 import localFont from "@next/font/local";
 import type { AppProps } from "next/app";
 import { Suspense } from "react";
@@ -21,15 +22,17 @@ const MyApp = ({ Component, pageProps, ...appProps }: AppProps) => {
   return (
     <Suspense fallback={<Loading />}>
       <RecoilRoot>
-        <main>
-          {appProps.router.pathname === "/" ? (
-            <Component {...pageProps} />
-          ) : (
-            <Layout>
+        <ChakraProvider>
+          <main>
+            {appProps.router.pathname === "/" ? (
               <Component {...pageProps} />
-            </Layout>
-          )}
-        </main>
+            ) : (
+              <Layout>
+                <Component {...pageProps} />
+              </Layout>
+            )}
+          </main>
+        </ChakraProvider>
       </RecoilRoot>
     </Suspense>
   );

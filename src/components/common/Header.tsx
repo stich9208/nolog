@@ -16,7 +16,7 @@ const Header = () => {
   };
 
   return (
-    <header className="flex h-[50px] w-[100vw] items-center justify-start bg-navy pl-[10px]">
+    <header>
       {PAGE_LIST.map((page) => (
         <span
           key={page}

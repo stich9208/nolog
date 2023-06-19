@@ -1,6 +1,5 @@
+import { Box, Card, CardBody, Stack, StackDivider } from "@chakra-ui/react";
 import React, { MouseEventHandler } from "react";
-
-import styles from "../../styles/ListView.module.css";
 
 const ListView = ({
   list,
@@ -12,26 +11,25 @@ const ListView = ({
   onClickItem: MouseEventHandler;
 }) => {
   return (
-    <ul className={styles.list_container}>
-      {list.map((listElem) => {
-        return (
-          <li
-            key={listElem.id}
-            id={listElem.id}
-            className="each_article"
-            onClick={onClickItem}
-          >
-            {column.map((columnElem) => {
-              const elem = columnElem.title.reduce(
-                (acc: any, curr: any) => acc[curr],
-                listElem
-              );
-              return columnElem.render(elem);
-            })}
-          </li>
-        );
-      })}
-    </ul>
+    <Card>
+      <CardBody>
+        <Stack divider={<StackDivider />} spacing="4">
+          {list.map((listElem) => {
+            return (
+              <Box key={listElem.id} id={listElem.id} onClick={onClickItem}>
+                {column.map((columnElem) => {
+                  const elem = columnElem.title.reduce(
+                    (acc: any, curr: any) => acc[curr],
+                    listElem
+                  );
+                  return columnElem.render(elem);
+                })}
+              </Box>
+            );
+          })}
+        </Stack>
+      </CardBody>
+    </Card>
   );
 };
 

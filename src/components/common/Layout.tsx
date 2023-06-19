@@ -1,3 +1,4 @@
+import { Container } from "@chakra-ui/react";
 import React from "react";
 
 import Header from "./Header";
@@ -8,10 +9,10 @@ type LayoutPropsType = {
 
 const Layout = ({ children }: LayoutPropsType) => {
   return (
-    <div>
+    <Container maxW="container.lg">
       <Header />
       {children}
-    </div>
+    </Container>
   );
 };
 

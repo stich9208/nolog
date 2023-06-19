@@ -1,3 +1,4 @@
+import { Badge, Heading, HStack, Text } from "@chakra-ui/react";
 import { GetStaticProps } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
@@ -14,21 +15,26 @@ const Articles = ({ articleList }: any) => {
   const ARTICLE_COLUMN = [
     {
       title: ["properties", "Name", "title", 0, "plain_text"],
-      render: (elem: string) => <div>{elem}</div>,
+      render: (elem: string) => <Heading size="md">{elem}</Heading>,
     },
     {
       title: ["properties", "Category", "multi_select"],
       render: (elem: any) => {
-        return elem.map((eachElem: any) => {
-          return (
-            <div
-              key={eachElem.id}
-              style={{ backgroundColor: `${eachElem.color}` }}
-            >
-              <span>{eachElem.name}</span>
-            </div>
-          );
-        });
+        return (
+          <HStack spacing={1}>
+            {elem.map((eachElem: any) => {
+              return (
+                <Badge
+                  key={eachElem.id}
+                  variant="solid"
+                  colorScheme={eachElem.color}
+                >
+                  {eachElem.name}
+                </Badge>
+              );
+            })}
+          </HStack>
+        );
       },
     },
     {
@@ -36,9 +42,9 @@ const Articles = ({ articleList }: any) => {
       render: (elem: string) => {
         const createdDate = new Date(elem);
         return (
-          <div>
+          <Text fontSize="xs">
             {`${createdDate.getFullYear()}-${createdDate.getMonth()}-${createdDate.getDate()}`}
-          </div>
+          </Text>
         );
       },
     },
