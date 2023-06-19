@@ -1,4 +1,4 @@
-import { Container } from "@chakra-ui/react";
+import { Box, Container } from "@chakra-ui/react";
 import React from "react";
 
 import Header from "./Header";
@@ -9,9 +9,9 @@ type LayoutPropsType = {
 
 const Layout = ({ children }: LayoutPropsType) => {
   return (
-    <Container maxW="container.lg">
+    <Container maxW="full" backgroundImage="url('/assets/background.svg')">
       <Header />
-      {children}
+      <Box maxW="lg"> {children}</Box>
     </Container>
   );
 };
