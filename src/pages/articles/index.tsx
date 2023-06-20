@@ -15,7 +15,11 @@ const Articles = ({ articleList }: any) => {
   const ARTICLE_COLUMN = [
     {
       title: ["properties", "Name", "title", 0, "plain_text"],
-      render: (elem: string) => <Heading size="md">{elem}</Heading>,
+      render: (elem: string) => (
+        <Heading size="md" textColor="white" mb="8px">
+          {elem}
+        </Heading>
+      ),
     },
     {
       title: ["properties", "Category", "multi_select"],
@@ -26,7 +30,8 @@ const Articles = ({ articleList }: any) => {
               return (
                 <Badge
                   key={eachElem.id}
-                  variant="solid"
+                  variant="subtle"
+                  fontSize="2xs"
                   colorScheme={eachElem.color}
                 >
                   {eachElem.name}
@@ -42,7 +47,13 @@ const Articles = ({ articleList }: any) => {
       render: (elem: string) => {
         const createdDate = new Date(elem);
         return (
-          <Text fontSize="xs">
+          <Text
+            fontSize="xs"
+            textColor="white"
+            alignSelf="flex-end"
+            position="absolute"
+            bottom="10px"
+          >
             {`${createdDate.getFullYear()}-${createdDate.getMonth()}-${createdDate.getDate()}`}
           </Text>
         );

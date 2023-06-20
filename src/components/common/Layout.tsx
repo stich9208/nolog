@@ -9,9 +9,9 @@ type LayoutPropsType = {
 
 const Layout = ({ children }: LayoutPropsType) => {
   return (
-    <Container maxW="full" backgroundImage="url('/assets/background.svg')">
+    <Container maxW="full" bg="#FFFDF6">
       <Header />
-      <Box maxW="lg"> {children}</Box>
+      <Container maxW="3xl">{children}</Container>
     </Container>
   );
 };
