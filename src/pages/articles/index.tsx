@@ -53,6 +53,7 @@ const Articles = ({ articleList }: any) => {
             alignSelf="flex-end"
             position="absolute"
             bottom="10px"
+            as="b"
           >
             {`${createdDate.getFullYear()}-${createdDate.getMonth()}-${createdDate.getDate()}`}
           </Text>
