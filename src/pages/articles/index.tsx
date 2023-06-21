@@ -4,6 +4,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import React, { MouseEvent, useEffect } from "react";
 import { useSetRecoilState } from "recoil";
+import { v4 as uuidv4 } from "uuid";
 
 import ListView from "../../components/molecule/ListView";
 import { articleListState } from "../../recoil/atom";
@@ -16,7 +17,7 @@ const Articles = ({ articleList }: any) => {
     {
       title: ["properties", "Name", "title", 0, "plain_text"],
       render: (elem: string) => (
-        <Heading size="md" textColor="white" mb="8px">
+        <Heading key={uuidv4()} size="md" textColor="white" mb="8px">
           {elem}
         </Heading>
       ),
@@ -25,7 +26,7 @@ const Articles = ({ articleList }: any) => {
       title: ["properties", "Category", "multi_select"],
       render: (elem: any) => {
         return (
-          <HStack spacing={1}>
+          <HStack key={uuidv4()} spacing={1}>
             {elem.map((eachElem: any) => {
               return (
                 <Badge
@@ -48,6 +49,7 @@ const Articles = ({ articleList }: any) => {
         const createdDate = new Date(elem);
         return (
           <Text
+            key={uuidv4()}
             fontSize="xs"
             textColor="white"
             alignSelf="flex-end"
