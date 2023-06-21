@@ -6,7 +6,7 @@ const NImage = ({ value }: any) => {
   const caption = value.caption ? value.caption[0]?.plain_text : "";
   return (
     <figure>
-      <Image src={src} alt={caption} />
+      <Image src={src} width={500} height={500} alt={caption} />
       {caption && <figcaption>{caption}</figcaption>}
     </figure>
   );
