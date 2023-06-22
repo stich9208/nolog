@@ -17,7 +17,7 @@ const Articles = ({ articleList }: any) => {
     {
       title: ["properties", "Name", "title", 0, "plain_text"],
       render: (elem: string) => (
-        <Heading key={uuidv4()} size="md" textColor="white" mb="8px">
+        <Heading key={uuidv4()} size="md" mb="8px">
           {elem}
         </Heading>
       ),
@@ -50,10 +50,9 @@ const Articles = ({ articleList }: any) => {
         return (
           <Text
             key={uuidv4()}
+            w="full"
             fontSize="xs"
-            textColor="white"
-            alignSelf="flex-end"
-            position="absolute"
+            textAlign="right"
             bottom="10px"
             as="b"
           >

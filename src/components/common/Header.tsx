@@ -64,7 +64,7 @@ const Header = () => {
         {PAGE_LIST.map((page) => (
           <Link
             href={page.toLocaleLowerCase()}
-            key={page}
+            key={`/${page}`}
             style={{ width: "100%", height: "100%" }}
           >
             <Tab
