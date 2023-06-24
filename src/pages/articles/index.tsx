@@ -17,7 +17,12 @@ const Articles = ({ articleList }: any) => {
     {
       title: ["properties", "Name", "title", 0, "plain_text"],
       render: (elem: string) => (
-        <Heading key={uuidv4()} size="md" mb="8px">
+        <Heading
+          key={uuidv4()}
+          size="md"
+          mb="8px"
+          fontFamily="'Gill Sans', sans-serif"
+        >
           {elem}
         </Heading>
       ),
@@ -26,12 +31,12 @@ const Articles = ({ articleList }: any) => {
       title: ["properties", "Category", "multi_select"],
       render: (elem: any) => {
         return (
-          <HStack key={uuidv4()} spacing={1}>
+          <HStack key={uuidv4()} spacing={1} position="absolute" top="35">
             {elem.map((eachElem: any) => {
               return (
                 <Badge
                   key={eachElem.id}
-                  variant="subtle"
+                  variant="outline"
                   fontSize="2xs"
                   colorScheme={eachElem.color}
                 >
@@ -48,14 +53,7 @@ const Articles = ({ articleList }: any) => {
       render: (elem: string) => {
         const createdDate = new Date(elem);
         return (
-          <Text
-            key={uuidv4()}
-            w="full"
-            fontSize="xs"
-            textAlign="right"
-            bottom="10px"
-            as="b"
-          >
+          <Text key={uuidv4()} w="full" fontSize="xs" textAlign="right">
             {`${createdDate.getFullYear()}-${createdDate.getMonth()}-${createdDate.getDate()}`}
           </Text>
         );

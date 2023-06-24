@@ -22,7 +22,9 @@ const ListView = ({
             backgroundColor="transparent"
             borderRadius="0"
             boxShadow="none"
-            h="110"
+            w="full"
+            h="full"
+            minH="110"
           >
             <CardBody
               id={listElem.id}
@@ -30,18 +32,8 @@ const ListView = ({
               display="flex"
               flexDirection="column"
               justifyContent="space-between"
-              p="0"
+              p="2"
             >
-              {/* <Image
-                src={
-                  listElem.cover
-                    ? listElem.cover[listElem.cover.type].url
-                    : "https://images.unsplash.com/photo-1564865878688-9a244444042a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80"
-                }
-                alt="thumbnail"
-                objectFit="cover"
-                maxW={{ base: "100%", sm: "200px" }}
-              /> */}
               {column.map((columnElem) => {
                 const elem = columnElem.title.reduce((acc: any, curr: any) => {
                   try {

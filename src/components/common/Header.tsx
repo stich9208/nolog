@@ -10,10 +10,6 @@ const Header = () => {
 
   const [tabIndex, setTabIndex] = useState<number>();
 
-  // useEffect(() => {
-  //   if (tabIndex) router.push(`/${PAGE_LIST[tabIndex - 1].toLowerCase()}`);
-  // }, [tabIndex]);
-
   useEffect(() => {
     switch (router.pathname) {
       case "/articles":
@@ -73,6 +69,7 @@ const Header = () => {
               borderRight="1px"
               w="full"
               h="full"
+              fontSize="2xl"
             >
               {page}
             </Tab>
