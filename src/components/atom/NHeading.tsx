@@ -1,27 +1,14 @@
+import { Heading } from "@chakra-ui/react";
 import React from "react";
-
-import NText from "./NText";
 
 const NHeading = ({ value, weight }: any) => {
   switch (weight) {
     case 1:
-      return (
-        <h1>
-          <NText text={value.rich_text} />
-        </h1>
-      );
+      return <Heading as="h1">{value.rich_text[0].plain_text}</Heading>;
     case 2:
-      return (
-        <h2>
-          <NText text={value.rich_text} />
-        </h2>
-      );
+      return <Heading as="h2">{value.rich_text[0].plain_text}</Heading>;
     default:
-      return (
-        <h3>
-          <NText text={value.rich_text} />
-        </h3>
-      );
+      return <Heading as="h3">{value.rich_text[0].plain_text}</Heading>;
   }
 };
 

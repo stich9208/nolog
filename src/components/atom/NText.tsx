@@ -1,28 +1,39 @@
 import React from "react";
 
-import styles from "../../styles/Render.module.css";
-
 const NText = ({ text }: any) => {
   if (!text) {
     return null;
   }
   return text.map((value: any, idx: number) => {
     const {
-      annotations: { bold, code, color, italic, strikethrough, underline },
+      annotations: { bold, color, italic, strikethrough, underline },
       text,
     } = value;
+    let style = {};
+    if (bold) style = { ...style, fontWeight: "bold" };
+    if (italic) style = { ...style, fontStyle: "italic" };
+    if (strikethrough) {
+      if (underline) {
+        style = {
+          ...style,
+          textDecoration: "line-through underline",
+        };
+      } else {
+        style = {
+          ...style,
+          textDecoration: "line-through",
+        };
+      }
+    } else {
+      if (underline)
+        style = {
+          ...style,
+          textDecoration: "underline",
+        };
+    }
+
     return (
-      <span
-        key={idx}
-        className={[
-          bold ? styles.bold : "",
-          code ? styles.code : "",
-          italic ? styles.italic : "",
-          strikethrough ? styles.strikethrough : "",
-          underline ? styles.underline : "",
-        ].join(" ")}
-        style={color !== "default" ? { color } : {}}
-      >
+      <span key={idx} style={color !== "default" ? { ...style, color } : style}>
         {text.link ? <a href={text.link.url}>{text.content}</a> : text.content}
       </span>
     );

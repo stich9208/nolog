@@ -1,3 +1,4 @@
+import { Box } from "@chakra-ui/react";
 import { GetStaticPaths, GetStaticProps } from "next";
 import React from "react";
 
@@ -6,11 +7,11 @@ import { getBlocks, getDatabases } from "../../util/controller";
 
 const ArticleDetail = ({ article }: any) => {
   return (
-    <div>
+    <Box p="10">
       {article.map((block: any) => (
         <NBlock key={block.id} block={block} />
       ))}
-    </div>
+    </Box>
   );
 };
 
