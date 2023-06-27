@@ -1,3 +1,4 @@
+import { List, ListItem } from "@chakra-ui/react";
 import React from "react";
 
 import NBookmark from "../atom/NBookmark";
@@ -31,6 +32,7 @@ const NBlock = ({ block }: any) => {
       return <NHeading value={value} weight={Number(headingWeight)} />;
     case "bulleted_list_item":
     case "numbered_list_item":
+      console.log(block);
       return (
         <li>
           <NText text={value.rich_text} />

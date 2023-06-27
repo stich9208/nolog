@@ -1,3 +1,4 @@
+import { ListItem, OrderedList, UnorderedList } from "@chakra-ui/react";
 import type { Block } from "notion-api-types/responses";
 import React from "react";
 
@@ -14,19 +15,19 @@ const NNestedList = ({ block }: any) => {
 
   if (isNumberedList) {
     return (
-      <ol>
+      <OrderedList>
         {value.children.map((block: Block) => (
           <NBlock key={block.id} block={block} />
         ))}
-      </ol>
+      </OrderedList>
     );
   }
   return (
-    <ul>
+    <UnorderedList>
       {value.children.map((block: Block) => (
         <NBlock key={block.id} block={block} />
       ))}
-    </ul>
+    </UnorderedList>
   );
 };
 
