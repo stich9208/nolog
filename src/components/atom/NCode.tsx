@@ -15,6 +15,7 @@ const NCode = ({ value, id }: any) => {
           borderRadius: "10px",
           boxShadow: "1px 2px 3px rgba(0,0,0,0.35)",
           fontSize: "0.85rem",
+          margin: "10px 0px",
         }}
       />
     </pre>

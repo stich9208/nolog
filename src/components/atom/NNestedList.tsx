@@ -15,7 +15,7 @@ const NNestedList = ({ block }: any) => {
 
   if (isNumberedList) {
     return (
-      <OrderedList>
+      <OrderedList style={{ listStylePosition: "outside" }}>
         {value.children.map((block: Block) => (
           <NBlock key={block.id} block={block} />
         ))}
@@ -23,7 +23,7 @@ const NNestedList = ({ block }: any) => {
     );
   }
   return (
-    <UnorderedList>
+    <UnorderedList style={{ listStylePosition: "outside" }}>
       {value.children.map((block: Block) => (
         <NBlock key={block.id} block={block} />
       ))}
