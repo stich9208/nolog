@@ -1,4 +1,4 @@
-import { Tab, TabList, Tabs } from "@chakra-ui/react";
+import { Box, Tab, TabList, Tabs } from "@chakra-ui/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
@@ -57,22 +57,27 @@ const Header = () => {
         border="none"
         w="full"
       >
-        {PAGE_LIST.map((page) => (
+        {PAGE_LIST.map((page, idx) => (
           <Link
             href={`/${page.toLocaleLowerCase()}`}
             key={`/${page}`}
             style={{ width: "100%", height: "100%" }}
           >
-            <Tab
-              name={page.toLowerCase()}
-              _selected={{ fontWeight: "bold" }}
+            <Box
+              // name={page.toLowerCase()}
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
               borderRight="1px"
               w="full"
               h="full"
-              fontSize="2xl"
+              fontSize={["0.75rem", "1rem"]}
+              style={{
+                fontWeight: `${tabIndex === idx + 1 ? "bold" : "normal"}`,
+              }}
             >
               {page}
-            </Tab>
+            </Box>
           </Link>
         ))}
       </TabList>

@@ -53,7 +53,7 @@ const Articles = ({ articleList }: any) => {
       render: (elem: string) => {
         const createdDate = new Date(elem);
         return (
-          <Text key={uuidv4()} w="full" fontSize="xs" textAlign="right">
+          <Text as="b" key={uuidv4()} w="full" fontSize="xs" textAlign="right">
             {`${createdDate.getFullYear()}-${createdDate.getMonth()}-${createdDate.getDate()}`}
           </Text>
         );
