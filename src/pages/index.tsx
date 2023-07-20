@@ -1,21 +1,26 @@
+import { Center, Flex } from "@chakra-ui/react";
+import { motion } from "framer-motion";
 import type { NextPage } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 
-import styles from "../styles/Home.module.css";
-
 const Home: NextPage = () => {
   const router = useRouter();
   //constant state
   const WELCOME_TEXT_LIST = [
-    "안녕하세요, 프론트엔드 개발자 정재욱입니다",
-    "HELLO, I`M JAEWOOK JUNG, FRONTEND DEVELOPER",
+    // "안녕하세요, 프론트엔드 개발자 정재욱입니다",
+    // "HELLO, I`M JAEWOOK JUNG, FRONTEND DEVELOPER",
+
+    "Hi",
+    "안녕하세요",
+    "Hola",
   ];
   const callback = useRef(() => {});
 
   //component state
   const [textIndex, setTextIndex] = useState(0);
+  const [collapseIndex, setCollapseIndex] = useState(0);
 
   //useEffect
   useEffect(() => {
@@ -28,41 +33,131 @@ const Home: NextPage = () => {
   callback.current = () =>
     setTextIndex((index) => (index + 1) % WELCOME_TEXT_LIST.length);
 
+  const onClickCollapseMenu = (e: any) => {
+    const { id } = e.currentTarget;
+    if (Number(id) === collapseIndex) {
+      setCollapseIndex(1000);
+    } else {
+      setCollapseIndex(Number(id));
+    }
+  };
+
+  const variants = {
+    open: { width: "30%" },
+    closed: {
+      width: "20px",
+    },
+  };
+  const mobile_variants = {
+    open: { height: "80px" },
+    closed: { height: "20px" },
+  };
+
+  const body_variants = {
+    open: { display: "block", opacity: 1 },
+    closed: { display: "none", opacity: 0 },
+  };
+
   return (
-    <div className={styles.container}>
+    <>
       <Head>
-        <title>blog</title>
-        <meta name="description" content="blog" />
+        <title>Frontend Developer J2W</title>
+        <meta name="description" content="Frontend Developer J2W`s Blog" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={styles.main}>
-        <div className={styles.info}>
-          <span>{WELCOME_TEXT_LIST[textIndex]}</span>
+      <Flex direction="column">
+        <Center>
+          <motion.div
+            animate={{
+              // visibility: ["hidden", "visible", "hidden"],
+              opacity: [0, 1, 0],
+              // scale: [0, 1, 0],
+            }}
+            transition={{
+              duration: 7,
+              ease: "easeInOut",
+              repeat: Infinity,
+              times: [0, 0.5, 1],
+            }}
+          >
+            <span>{WELCOME_TEXT_LIST[textIndex]}</span>
+          </motion.div>
+        </Center>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            width: "100vw",
+          }}
+        >
+          {["RESUME", "ARTICLES", "PROJECTS", "OTHER", "CONTACT"].map(
+            (info, idx) => (
+              <>
+                <motion.div
+                  id={String(idx)}
+                  variants={variants}
+                  animate={collapseIndex === idx ? "open" : "closed"}
+                  onClick={onClickCollapseMenu}
+                >
+                  <div
+                    style={{
+                      backgroundColor: "red",
+                      height: "300px",
+                      overflow: "hidden",
+                      writingMode: `${
+                        collapseIndex === idx ? "horizontal-tb" : "vertical-rl"
+                      }`,
+                    }}
+                  >
+                    {info}
+                    <motion.div
+                      variants={body_variants}
+                      animate={collapseIndex === idx ? "open" : "closed"}
+                    >
+                      <div
+                        style={{
+                          width: "100%",
+                          height: "300px",
+                          overflow: "hidden",
+                        }}
+                      >
+                        Lorem Ipsum is simply dummy text of the printing and
+                        typesetting industry. Lorem Ipsum has been the industry
+                        standard dummy text ever since the 1500s, when an
+                        unknown printer took a galley of type and scrambled it
+                        to make a type specimen book. It has survived not only
+                        five centuries, but also the leap into electronic
+                        typesetting, remaining essentially unchanged. It was
+                        popularised in the 1960s with the release of Letraset
+                        sheets containing Lorem Ipsum passages, and more
+                        recently with desktop publishing software like Aldus
+                        PageMaker including versions of Lorem Ipsum.
+                      </div>
+                    </motion.div>
+                  </div>
+                </motion.div>
+              </>
+            )
+          )}
         </div>
-        <div className={styles.resume} onClick={() => router.push("/resume")}>
+        {/* <div onClick={() => router.push("/resume")}>
           <div>RESUME</div>
         </div>
-        <div
-          className={styles.articles}
-          onClick={() => router.push("/articles")}
-        >
+        <div onClick={() => router.push("/articles")}>
           <div>ARTICLES</div>
         </div>
 
-        <div
-          className={styles.projects}
-          onClick={() => router.push("/projects")}
-        >
+        <div onClick={() => router.push("/projects")}>
           <div>PROJECTS</div>
         </div>
-        <div className={styles.other}>
+        <div>
           <div>OTHER</div>
         </div>
-        <div className={styles.contact}>
+        <div>
           <div>CONTACT</div>
-        </div>
-      </main>
-    </div>
+        </div> */}
+      </Flex>
+    </>
   );
 };
 

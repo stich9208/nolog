@@ -15,7 +15,7 @@
     "@emotion/styled": "^11.11.0",
     "@next/font": "^13.4.6",
     "@notionhq/client": "^2.1.1",
-    "framer-motion": "^10.12.16",
+    "framer-motion": "^10.13.0",
     "next": "^13.4.6",
     "react": "^18.2.0",
     "react-code-blocks": "^0.0.9-0",
