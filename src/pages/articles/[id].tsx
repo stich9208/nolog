@@ -1,17 +1,46 @@
 import { Box } from "@chakra-ui/react";
 import { GetStaticPaths, GetStaticProps } from "next";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import NBlock from "../../components/common/NBlock";
 import { getBlocks, getDatabases } from "../../util/controller";
 
 const ArticleDetail = ({ article }: any) => {
+  // component state
+  const [numberedListCount, setNumberedListCount] = useState<any>();
+
+  useEffect(() => {
+    let count = 0;
+    let countList = new Map();
+    article.map((block: any, idx: number) => {
+      if (block.type === "numbered_list_item") {
+        countList.set(idx, count + 1);
+        count++;
+      } else {
+        if (count !== 0) count = 0;
+      }
+    });
+    setNumberedListCount(countList);
+  }, []);
+
   return (
-    <Box p="10">
-      {article.map((block: any) => (
-        <NBlock key={block.id} block={block} />
-      ))}
-    </Box>
+    numberedListCount && (
+      <Box p={["2", "10"]}>
+        {article.map((block: any, idx: number) => {
+          return (
+            <NBlock
+              key={block.id}
+              block={block}
+              numberedListCount={
+                block.type === "numbered_list_item"
+                  ? numberedListCount.get(idx)
+                  : null
+              }
+            />
+          );
+        })}
+      </Box>
+    )
   );
 };
 

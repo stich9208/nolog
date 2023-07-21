@@ -1,5 +1,5 @@
 import { List, ListItem } from "@chakra-ui/react";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import NBookmark from "../atom/NBookmark";
 import NCode from "../atom/NCode";
@@ -16,7 +16,7 @@ import NTodo from "../atom/NTodo";
 import NToggle from "../atom/NToggle";
 import CannotFindBlock from "./CannotFindBlock";
 
-const NBlock = ({ block }: any) => {
+const NBlock = ({ block, numberedListCount }: any) => {
   const { type, id } = block;
   const value = block[type];
 
@@ -31,13 +31,41 @@ const NBlock = ({ block }: any) => {
       const headingWeight = type.split("_")[1];
       return <NHeading value={value} weight={Number(headingWeight)} />;
     case "bulleted_list_item":
-    case "numbered_list_item":
       return (
-        <li>
+        <li
+          style={{
+            paddingLeft: "22px",
+            textIndent: "-22px",
+            marginBottom: "5px",
+          }}
+        >
           <NText text={value.rich_text} />
           {value.has_children && <NNestedList block={block} />}
         </li>
       );
+    case "numbered_list_item":
+      return (
+        <ol
+          style={{
+            paddingLeft: "22px",
+            textIndent: "-22px",
+            marginBottom: "5px",
+          }}
+          start={numberedListCount}
+        >
+          <li
+            style={{
+              paddingLeft: "22px",
+              textIndent: "-22px",
+              marginBottom: "5px",
+            }}
+          >
+            <NText text={value.rich_text} />
+            {value.has_children && <NNestedList block={block} />}
+          </li>
+        </ol>
+      );
+
     case "to_do":
       return <NTodo id={id} value={value} />;
     case "toggle":

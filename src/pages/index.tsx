@@ -35,11 +35,7 @@ const Home: NextPage = () => {
 
   const onClickCollapseMenu = (e: any) => {
     const { id } = e.currentTarget;
-    if (Number(id) === collapseIndex) {
-      setCollapseIndex(1000);
-    } else {
-      setCollapseIndex(Number(id));
-    }
+    setCollapseIndex(Number(id));
   };
 
   const variants = {

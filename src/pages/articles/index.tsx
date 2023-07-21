@@ -11,7 +11,7 @@ import { articleListState } from "../../recoil/atom";
 import { getDatabases } from "../../util/controller";
 
 const Articles = ({ articleList }: any) => {
-  // constant variable
+  // constant state
   const router = useRouter();
   const ARTICLE_COLUMN = [
     {
