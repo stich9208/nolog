@@ -7,7 +7,7 @@ import { getBlocks, getDatabases } from "../../util/controller";
 
 const ArticleDetail = ({ article }: any) => {
   // component state
-  const [numberedListCount, setNumberedListCount] = useState<any>();
+  const [numberedListMap, setNumberedListMap] = useState<any>();
 
   useEffect(() => {
     let count = 0;
@@ -20,20 +20,20 @@ const ArticleDetail = ({ article }: any) => {
         if (count !== 0) count = 0;
       }
     });
-    setNumberedListCount(countList);
+    setNumberedListMap(countList);
   }, []);
 
   return (
-    numberedListCount && (
+    numberedListMap && (
       <Box p={["2", "10"]}>
         {article.map((block: any, idx: number) => {
           return (
             <NBlock
               key={block.id}
               block={block}
-              numberedListCount={
+              numberedListMap={
                 block.type === "numbered_list_item"
-                  ? numberedListCount.get(idx)
+                  ? numberedListMap.get(idx)
                   : null
               }
             />

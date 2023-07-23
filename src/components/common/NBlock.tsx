@@ -16,7 +16,7 @@ import NTodo from "../atom/NTodo";
 import NToggle from "../atom/NToggle";
 import CannotFindBlock from "./CannotFindBlock";
 
-const NBlock = ({ block, numberedListCount }: any) => {
+const NBlock = ({ block, numberedListMap }: any) => {
   const { type, id } = block;
   const value = block[type];
 
@@ -51,7 +51,7 @@ const NBlock = ({ block, numberedListCount }: any) => {
             textIndent: "-22px",
             marginBottom: "5px",
           }}
-          start={numberedListCount}
+          start={numberedListMap}
         >
           <li
             style={{
