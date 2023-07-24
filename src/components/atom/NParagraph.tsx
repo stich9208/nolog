@@ -4,9 +4,8 @@ import React from "react";
 import NText from "./NText";
 
 const NParagraph = ({ value }: any) => {
-  console.log(value);
   return (
-    <Text fontSize={["sm", "md"]} lineHeight="160%" mb="2">
+    <Text fontSize={["sm", "md"]} lineHeight="190%" mb="2">
       <NText text={value.rich_text} />
     </Text>
   );

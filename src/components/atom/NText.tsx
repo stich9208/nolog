@@ -39,10 +39,13 @@ const NText = ({ text }: any) => {
           <Kbd
             bg="#FFFDF6"
             borderRadius="0px"
-            p="0"
-            borderBottomColor="orange.300"
+            p="0.5"
+            // color="orange.500"
+            // backgroundColor="orange.300"
             borderTop="0px"
             borderX="0px"
+            borderBottomWidth="2px"
+            borderColor="orange.200"
           >
             {text.content}
           </Kbd>
