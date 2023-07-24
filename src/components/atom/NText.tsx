@@ -9,8 +9,8 @@ const NText = ({ text }: any) => {
       annotations: { bold, color, italic, strikethrough, underline },
       text,
     } = value;
-    let style = {};
-    if (bold) style = { ...style, fontWeight: "bold" };
+    let style: any = { fontSize: "1rem" };
+    if (bold) style = { ...style, fontWeight: "600" };
     if (italic) style = { ...style, fontStyle: "italic" };
     if (strikethrough) {
       if (underline) {

@@ -15,32 +15,42 @@ const Articles = ({ articleList }: any) => {
   const router = useRouter();
   const ARTICLE_COLUMN = [
     {
+      name: "title",
       title: ["properties", "Name", "title", 0, "plain_text"],
       render: (elem: string) => (
         <Heading
           key={uuidv4()}
-          size="md"
-          mb="8px"
-          fontFamily="'Gill Sans', sans-serif"
+          as="h3"
+          fontSize="1.2rem"
+          fontWeight="600"
+          mb="5px"
         >
           {elem}
         </Heading>
       ),
     },
     {
+      name: "badge",
       title: ["properties", "Category", "multi_select"],
       render: (elem: any) => {
         return (
-          <HStack key={uuidv4()} spacing={1} position="absolute" top="35">
+          <HStack key={uuidv4()} spacing={1}>
             {elem.map((eachElem: any) => {
               return (
                 <Badge
                   key={eachElem.id}
-                  variant="outline"
+                  variant="subtle"
                   fontSize="2xs"
                   colorScheme={eachElem.color}
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
                 >
-                  {eachElem.name}
+                  <span style={{ marginBottom: "-2px", padding: "2px" }}>
+                    {eachElem.name}
+                  </span>
                 </Badge>
               );
             })}
@@ -49,12 +59,27 @@ const Articles = ({ articleList }: any) => {
       },
     },
     {
+      name: "created_date",
       title: ["created_time"],
       render: (elem: string) => {
         const createdDate = new Date(elem);
         return (
-          <Text as="b" key={uuidv4()} w="full" fontSize="xs" textAlign="right">
-            {`${createdDate.getFullYear()}-${createdDate.getMonth()}-${createdDate.getDate()}`}
+          <Text
+            fontWeight="400"
+            key={uuidv4()}
+            w="full"
+            fontSize="xs"
+            textAlign="right"
+          >
+            {`${createdDate.getFullYear()}-${
+              createdDate.getMonth() < 10
+                ? `0${createdDate.getMonth()}`
+                : createdDate.getMonth()
+            }-${
+              createdDate.getDate() < 10
+                ? `0${createdDate.getDate()}`
+                : createdDate.getDate()
+            }`}
           </Text>
         );
       },
@@ -84,15 +109,11 @@ const Articles = ({ articleList }: any) => {
       </Head>
 
       <div>
-        <div>
-          <div>
-            <ListView
-              list={articleList}
-              column={ARTICLE_COLUMN}
-              onClickItem={onClickItem}
-            />
-          </div>
-        </div>
+        <ListView
+          list={articleList}
+          column={ARTICLE_COLUMN}
+          onClickItem={onClickItem}
+        />
       </div>
     </div>
   );

@@ -1,5 +1,4 @@
-import { List, ListItem } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 import NBookmark from "../atom/NBookmark";
 import NCode from "../atom/NCode";
@@ -34,9 +33,12 @@ const NBlock = ({ block, numberedListMap }: any) => {
       return (
         <li
           style={{
-            paddingLeft: "22px",
-            textIndent: "-22px",
-            marginBottom: "5px",
+            paddingInlineStart: "1ch",
+            marginBottom: "0.5rem",
+            background: "url(/assets/pin_icon.png) no-repeat 0px 1px",
+            backgroundSize: "20px 20px",
+            listStyleType: "none",
+            padding: "0px 0px 8px 27px",
           }}
         >
           <NText text={value.rich_text} />
@@ -47,19 +49,12 @@ const NBlock = ({ block, numberedListMap }: any) => {
       return (
         <ol
           style={{
-            paddingLeft: "22px",
-            textIndent: "-22px",
-            marginBottom: "5px",
+            paddingInlineStart: "2ch",
+            marginBottom: "0.5rem",
           }}
           start={numberedListMap}
         >
-          <li
-            style={{
-              paddingLeft: "22px",
-              textIndent: "-22px",
-              marginBottom: "5px",
-            }}
-          >
+          <li>
             <NText text={value.rich_text} />
             {value.has_children && <NNestedList block={block} />}
           </li>

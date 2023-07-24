@@ -4,7 +4,8 @@ const globalTheme = extendTheme({
   components: {
     Heading: {
       baseStyle: {
-        fontFamily: "var(--pretendard-font)",
+        fontFamily: "var(--DEFAUT_FONT)",
+        fontWieght: "300",
       },
     },
   },

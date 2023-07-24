@@ -13,7 +13,7 @@ const NImage = ({ value }: any) => {
       }}
     >
       <div>
-        <Image src={src} width={500} height={500} alt={caption} />
+        <Image src={src} width={700} height={700} alt={caption} />
         {caption && (
           <figcaption style={{ textAlign: "center", opacity: 0.5 }}>
             {caption}

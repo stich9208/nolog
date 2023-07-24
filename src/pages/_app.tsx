@@ -5,7 +5,7 @@ import { RecoilRoot } from "recoil";
 
 import Layout from "../components/common/Layout";
 import Loading from "../components/common/Loading";
-import { PRETENDARD } from "../styles/font";
+import { DEFAUT_FONT } from "../styles/font";
 import { globalTheme } from "../styles/globalTheme";
 
 const MyApp = ({ Component, pageProps, ...appProps }: AppProps) => {
@@ -13,7 +13,7 @@ const MyApp = ({ Component, pageProps, ...appProps }: AppProps) => {
     <Suspense fallback={<Loading />}>
       <RecoilRoot>
         <ChakraProvider theme={globalTheme}>
-          <main className={PRETENDARD.className}>
+          <main className={DEFAUT_FONT.className}>
             {appProps.router.pathname === "/" ? (
               <Component {...pageProps} />
             ) : (
