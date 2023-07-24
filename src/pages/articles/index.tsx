@@ -34,7 +34,7 @@ const Articles = ({ articleList }: any) => {
       title: ["properties", "Category", "multi_select"],
       render: (elem: any) => {
         return (
-          <HStack key={uuidv4()} spacing={1}>
+          <HStack key={uuidv4()} spacing={1} ml="2">
             {elem.map((eachElem: any) => {
               return (
                 <Badge
@@ -48,7 +48,12 @@ const Articles = ({ articleList }: any) => {
                     alignItems: "center",
                   }}
                 >
-                  <span style={{ marginBottom: "-2px", padding: "2px" }}>
+                  <span
+                    style={{
+                      marginBottom: "-2px",
+                      padding: "2px",
+                    }}
+                  >
                     {eachElem.name}
                   </span>
                 </Badge>

@@ -29,6 +29,7 @@ const ListView = ({
         onClick={onClickItem}
         display="flex"
         flexDirection="column"
+        justifyContent="space-between"
         p="2"
       >
         <div>

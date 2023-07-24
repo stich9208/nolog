@@ -1,3 +1,4 @@
+import { Kbd } from "@chakra-ui/react";
 import React from "react";
 
 const NText = ({ text }: any) => {
@@ -6,7 +7,7 @@ const NText = ({ text }: any) => {
   }
   return text.map((value: any, idx: number) => {
     const {
-      annotations: { bold, color, italic, strikethrough, underline },
+      annotations: { bold, color, italic, strikethrough, underline, code },
       text,
     } = value;
     let style: any = { fontSize: "1rem" };
@@ -34,7 +35,22 @@ const NText = ({ text }: any) => {
 
     return (
       <span key={idx} style={color !== "default" ? { ...style, color } : style}>
-        {text.link ? <a href={text.link.url}>{text.content}</a> : text.content}
+        {code ? (
+          <Kbd
+            bg="#FFFDF6"
+            borderRadius="0px"
+            p="0"
+            borderBottomColor="orange.300"
+            borderTop="0px"
+            borderX="0px"
+          >
+            {text.content}
+          </Kbd>
+        ) : text.link ? (
+          <a href={text.link.url}>{text.content}</a>
+        ) : (
+          text.content
+        )}
       </span>
     );
   });
