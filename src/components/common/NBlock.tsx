@@ -1,6 +1,7 @@
 import React from "react";
 
 import NBookmark from "../atom/NBookmark";
+import NCallout from "../atom/NCallout";
 import NCode from "../atom/NCode";
 import NDivider from "../atom/NDivider";
 import NFile from "../atom/NFile";
@@ -61,7 +62,6 @@ const NBlock = ({ block, numberedListMap }: any) => {
           </li>
         </ol>
       );
-
     case "to_do":
       return <NTodo id={id} value={value} />;
     case "toggle":
@@ -80,6 +80,8 @@ const NBlock = ({ block, numberedListMap }: any) => {
       return <NFile value={value} />;
     case "bookmark":
       return <NBookmark value={value} />;
+    case "callout":
+      return <NCallout value={value} />;
     default:
       console.log(block);
       return <CannotFindBlock />;
