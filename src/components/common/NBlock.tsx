@@ -39,7 +39,6 @@ const NBlock = ({ block, numberedListMap }: any) => {
             backgroundSize: "20px 20px",
             listStyleType: "none",
             padding: "0px 0px 8px 27px",
-            // fontStyle: "italic",
             fontSize: "0.8rem",
           }}
         >
