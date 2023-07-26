@@ -13,14 +13,19 @@ import { v4 as uuidv4 } from "uuid";
 const NTable = ({ value }: any) => {
   const { has_column_header, has_row_header } = value;
   return (
-    <TableContainer border="1px solid #E2E8F0" borderRadius="5px" my="5">
+    <TableContainer
+      border="1px solid #E2E8F0"
+      borderRadius="5px"
+      my="5"
+      whiteSpace="pre-wrap"
+    >
       <Table variant="simple">
         {has_column_header && (
-          <Thead>
+          <Thead bgColor="orange.300" color="black">
             <Tr>
               {value.children[0].table_row.cells.map((cell: any) => {
                 return (
-                  <Th key={uuidv4()}>
+                  <Th key={uuidv4()} textAlign="center" fontSize="0.8rem" p="3">
                     {cell.map((cellText: any) => cellText.plain_text)}
                   </Th>
                 );
@@ -40,7 +45,7 @@ const NTable = ({ value }: any) => {
                           {cell.map((cellText: any) => cellText.plain_text)}
                         </Th>
                       ) : (
-                        <Td key={uuidv4()}>
+                        <Td key={uuidv4()} p="2">
                           {cell.map((cellText: any) => cellText.plain_text)}
                         </Td>
                       );
@@ -58,7 +63,7 @@ const NTable = ({ value }: any) => {
                 <Tr key={uuidv4()}>
                   {child.table_row.cells.map((cell: any) => {
                     return (
-                      <Td key={uuidv4()}>
+                      <Td key={uuidv4()} p="2">
                         {cell.map((cellText: any) => cellText.plain_text)}
                       </Td>
                     );
