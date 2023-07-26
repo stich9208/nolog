@@ -1,4 +1,4 @@
-import { Card, CardBody, Image, Stack, StackDivider } from "@chakra-ui/react";
+import { Card, CardBody, Stack, StackDivider } from "@chakra-ui/react";
 import React, { MouseEventHandler } from "react";
 
 const ListView = ({

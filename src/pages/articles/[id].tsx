@@ -27,6 +27,7 @@ const ArticleDetail = ({ article }: any) => {
     numberedListMap && (
       <Box p={["2", "10"]}>
         {article.map((block: any, idx: number) => {
+          console.log(block);
           return (
             <NBlock
               key={block.id}

@@ -83,7 +83,7 @@ const NBlock = ({ block, numberedListMap }: any) => {
     case "callout":
       return <NCallout value={value} />;
     default:
-      console.log(block);
+      console.log("cannot find", block);
       return <CannotFindBlock />;
   }
 };

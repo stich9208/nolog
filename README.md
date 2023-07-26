@@ -15,7 +15,7 @@
 
 ## Backlog
 
-- [ ] notion column_list block component 만들기
+- [x] notion column_list(blockquote) block component 만들기
 - [x] notion callout block component 만들기
 - [ ] Table block 줄바꿈 및 ui 수정
 - [ ] Main 화면 ui 수정
