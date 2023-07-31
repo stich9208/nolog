@@ -10,7 +10,11 @@ const NText = ({ text }: any) => {
       annotations: { bold, color, italic, strikethrough, underline, code },
       text,
     } = value;
-    let style: any = { fontSize: "1rem", whiteSpace: "pre-wrap" };
+    let style: any = {
+      fontSize: "1rem",
+      whiteSpace: "pre-wrap",
+      wordBreak: "break-word",
+    };
     if (bold) style = { ...style, fontWeight: "600" };
     if (italic) style = { ...style, fontStyle: "italic" };
     if (strikethrough) {

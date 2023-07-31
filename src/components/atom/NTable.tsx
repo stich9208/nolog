@@ -14,12 +14,16 @@ const NTable = ({ value }: any) => {
   const { has_column_header, has_row_header } = value;
   return (
     <TableContainer
-      border="1px solid #E2E8F0"
+      border="1px solid #A0AEC0"
       borderRadius="5px"
+      borderBottom="none"
       my="5"
       whiteSpace="pre-wrap"
+      fontSize="0.85rem"
+      fontWeight="500"
+      color="gray.600"
     >
-      <Table variant="simple">
+      <Table variant="simple" layout="fixed">
         {has_column_header && (
           <Thead bgColor="orange.300" color="black">
             <Tr>
@@ -34,7 +38,7 @@ const NTable = ({ value }: any) => {
           </Thead>
         )}
         {
-          <Tbody>
+          <Tbody verticalAlign="baseline">
             {value.children.map((child: any, idx: number) => {
               if (!has_column_header || idx > 0) {
                 return (
@@ -45,7 +49,16 @@ const NTable = ({ value }: any) => {
                           {cell.map((cellText: any) => cellText.plain_text)}
                         </Th>
                       ) : (
-                        <Td key={uuidv4()} p="2">
+                        <Td
+                          key={uuidv4()}
+                          py="1"
+                          borderColor="gray.400"
+                          borderRight={
+                            idx === child.table_row.cells.length - 1
+                              ? "none"
+                              : "1px solid #A0AEC0"
+                          }
+                        >
                           {cell.map((cellText: any) => cellText.plain_text)}
                         </Td>
                       );
@@ -63,7 +76,7 @@ const NTable = ({ value }: any) => {
                 <Tr key={uuidv4()}>
                   {child.table_row.cells.map((cell: any) => {
                     return (
-                      <Td key={uuidv4()} p="2">
+                      <Td key={uuidv4()} py="1">
                         {cell.map((cellText: any) => cellText.plain_text)}
                       </Td>
                     );

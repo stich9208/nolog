@@ -9,14 +9,7 @@ type LayoutPropsType = {
 
 const Layout = ({ children }: LayoutPropsType) => {
   return (
-    <Container
-      maxW="full"
-      minH="100vh"
-      h="full"
-      bg="#FFFDF6"
-      pb="20px"
-      px="none"
-    >
+    <Container maxW="full" minH="100vh" h="full" pb="20px" px="none">
       <Header />
       <Container border="1px" maxW="4xl" px="none">
         {children}

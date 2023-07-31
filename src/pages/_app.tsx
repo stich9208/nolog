@@ -13,7 +13,10 @@ const MyApp = ({ Component, pageProps, ...appProps }: AppProps) => {
     <Suspense fallback={<Loading />}>
       <RecoilRoot>
         <ChakraProvider theme={globalTheme}>
-          <main className={DEFAUT_FONT.className}>
+          <main
+            className={DEFAUT_FONT.className}
+            style={{ backgroundColor: "#FFFDF6" }}
+          >
             {appProps.router.pathname === "/" ? (
               <Component {...pageProps} />
             ) : (
