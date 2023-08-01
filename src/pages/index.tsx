@@ -5,6 +5,8 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 
+import MotionCollapseMenuCard from "../components/organism/CollapseMenuCard";
+
 const Home: NextPage = () => {
   const router = useRouter();
   //constant state
@@ -100,48 +102,14 @@ const Home: NextPage = () => {
           borderTop="1px solid black"
         >
           {CATEGORY_LIST.map((category, idx) => (
-            <motion.div
+            <MotionCollapseMenuCard
               key={idx}
-              id={String(idx)}
-              variants={variants}
-              animate={collapseIndex === idx ? "open" : "closed"}
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                fontSize: "1.8rem",
-                fontWeight: "500",
-
-                overflow: "hidden",
-                cursor: `${collapseIndex === idx ? "default" : "pointer"}`,
-                writingMode: `${
-                  collapseIndex === idx ? "horizontal-tb" : "vertical-rl"
-                }`,
-                borderRight: `${
-                  idx === CATEGORY_LIST.length - 1 ? "none" : "1px solid black"
-                }`,
-              }}
-              onClick={onClickCollapseMenu}
-            >
-              <div id={String(idx)}>
-                {category}
-                <motion.div
-                  variants={body_variants}
-                  animate={collapseIndex === idx ? "open" : "closed"}
-                >
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry
-                  standard dummy text ever since the 1500s, when an unknown
-                  printer took a galley of type and scrambled it to make a type
-                  specimen book. It has survived not only five centuries, but
-                  also the leap into electronic typesetting, remaining
-                  essentially unchanged. It was popularised in the 1960s with
-                  the release of Letraset sheets containing Lorem Ipsum
-                  passages, and more recently with desktop publishing software
-                  like Aldus PageMaker including versions of Lorem Ipsum.
-                </motion.div>
-              </div>
-            </motion.div>
+              idx={idx}
+              category={category}
+              isOpen={collapseIndex === idx}
+              isLast={idx === CATEGORY_LIST.length - 1}
+              onClickCollapseMenu={onClickCollapseMenu}
+            />
           ))}
         </Box>
         {/* <div onClick={() => router.push("/resume")}>

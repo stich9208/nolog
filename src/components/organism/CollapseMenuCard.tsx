@@ -64,4 +64,6 @@ const CollapseMenuCard = ({
   );
 };
 
-export default CollapseMenuCard;
+const MotionCollapseMenuCard = motion(CollapseMenuCard);
+
+export default MotionCollapseMenuCard;
