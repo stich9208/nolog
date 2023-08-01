@@ -1,4 +1,4 @@
-import { Center, Flex } from "@chakra-ui/react";
+import { Box, Flex } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import type { NextPage } from "next";
 import Head from "next/head";
@@ -9,9 +9,13 @@ const Home: NextPage = () => {
   const router = useRouter();
   //constant state
   const WELCOME_TEXT_LIST = [
-    "안녕하세요, 프론트엔드 개발자 정재욱입니다",
-    "HELLO, I`M JAEWOOK JUNG, FRONTEND DEVELOPER",
+    // "안녕하세요, 프론트엔드 개발자 정재욱입니다",
+    // "HELLO, I`M JAEWOOK JUNG, FRONTEND DEVELOPER",
+    "hi",
+    "hello",
+    "안녕",
   ];
+  const CATEGORY_LIST = ["RESUME", "ARTICLES", "PROJECTS", "OTHER", "CONTACT"];
   const callback = useRef(() => {});
 
   //component state
@@ -35,9 +39,9 @@ const Home: NextPage = () => {
   };
 
   const variants = {
-    open: { width: "30%" },
+    open: { flex: 5 },
     closed: {
-      width: "20px",
+      flex: 1,
     },
   };
   const mobile_variants = {
@@ -51,87 +55,95 @@ const Home: NextPage = () => {
   };
 
   return (
-    <>
+    <Box display="flex" w="100vw" justifyContent="center">
       <Head>
         <title>Frontend Developer Jaewook Jung</title>
         <meta name="description" content="Frontend Developer J2W`s Blog" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Flex direction="column">
-        <motion.div
+      <Flex direction="column" w="98vw">
+        <Box
+          h={["20vh", "40vh"]}
           style={{
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            width: "100vw",
-            height: "50vh",
-            fontSize: "min(4vw, 50px)",
+            width: "100%",
+            fontSize: "min(5vw, 50px)",
             fontWeight: "600",
-            borderBottom: "1px solid black",
-          }}
-          animate={{
-            opacity: [0, 1, 0],
-          }}
-          transition={{
-            duration: 7,
-            ease: "easeInOut",
-            repeat: Infinity,
-            times: [0, 0.5, 1],
+            textAlign: "center",
+            whiteSpace: "pre-wrap",
+            wordBreak: "break-word",
+            transform: "scale(1, 1.5)",
           }}
         >
-          <span>{WELCOME_TEXT_LIST[textIndex]}</span>
-        </motion.div>
+          <motion.div
+            animate={{
+              opacity: [0, 1, 0],
+            }}
+            transition={{
+              duration: 7,
+              ease: "easeInOut",
+              repeat: Infinity,
+              times: [0, 0.5, 1],
+            }}
+          >
+            <span>{WELCOME_TEXT_LIST[textIndex]}</span>
+          </motion.div>
+        </Box>
 
-        <div
-          style={{
-            display: "flex",
-            // justifyContent: "space-between",
-            width: "100vw",
-            height: "50vh",
-          }}
+        <Box
+          display="flex"
+          w="100%"
+          h={["80vh", "60vh"]}
+          py="5"
+          borderTop="1px solid black"
         >
-          {["RESUME", "ARTICLES", "PROJECTS", "OTHER", "CONTACT"].map(
-            (category, idx) => (
-              <motion.div
-                key={idx}
-                id={String(idx)}
-                variants={variants}
-                animate={collapseIndex === idx ? "open" : "closed"}
-                style={{
-                  height: "100%",
-                  overflow: "hidden",
-                  writingMode: `${
-                    collapseIndex === idx ? "horizontal-tb" : "vertical-rl"
-                  }`,
-                  border: "1px solid black",
-                  width: `${collapseIndex === idx ? "50vw" : "calc(50vw / 4)"}`,
-                }}
-              >
-                <div id={String(idx)} onClick={onClickCollapseMenu}>
-                  <div>
-                    {category}
-                    <motion.div
-                      variants={body_variants}
-                      animate={collapseIndex === idx ? "open" : "closed"}
-                    >
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry. Lorem Ipsum has been the industry
-                      standard dummy text ever since the 1500s, when an unknown
-                      printer took a galley of type and scrambled it to make a
-                      type specimen book. It has survived not only five
-                      centuries, but also the leap into electronic typesetting,
-                      remaining essentially unchanged. It was popularised in the
-                      1960s with the release of Letraset sheets containing Lorem
-                      Ipsum passages, and more recently with desktop publishing
-                      software like Aldus PageMaker including versions of Lorem
-                      Ipsum.
-                    </motion.div>
-                  </div>
-                </div>
-              </motion.div>
-            )
-          )}
-        </div>
+          {CATEGORY_LIST.map((category, idx) => (
+            <motion.div
+              key={idx}
+              id={String(idx)}
+              variants={variants}
+              animate={collapseIndex === idx ? "open" : "closed"}
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                fontSize: "1.8rem",
+                fontWeight: "500",
+
+                overflow: "hidden",
+                cursor: `${collapseIndex === idx ? "default" : "pointer"}`,
+                writingMode: `${
+                  collapseIndex === idx ? "horizontal-tb" : "vertical-rl"
+                }`,
+                borderRight: `${
+                  idx === CATEGORY_LIST.length - 1 ? "none" : "1px solid black"
+                }`,
+              }}
+              onClick={onClickCollapseMenu}
+            >
+              <div id={String(idx)}>
+                {category}
+                <motion.div
+                  variants={body_variants}
+                  animate={collapseIndex === idx ? "open" : "closed"}
+                >
+                  Lorem Ipsum is simply dummy text of the printing and
+                  typesetting industry. Lorem Ipsum has been the industry
+                  standard dummy text ever since the 1500s, when an unknown
+                  printer took a galley of type and scrambled it to make a type
+                  specimen book. It has survived not only five centuries, but
+                  also the leap into electronic typesetting, remaining
+                  essentially unchanged. It was popularised in the 1960s with
+                  the release of Letraset sheets containing Lorem Ipsum
+                  passages, and more recently with desktop publishing software
+                  like Aldus PageMaker including versions of Lorem Ipsum.
+                </motion.div>
+              </div>
+            </motion.div>
+          ))}
+        </Box>
         {/* <div onClick={() => router.push("/resume")}>
           <div>RESUME</div>
         </div>
@@ -149,7 +161,7 @@ const Home: NextPage = () => {
           <div>CONTACT</div>
         </div> */}
       </Flex>
-    </>
+    </Box>
   );
 };
 
