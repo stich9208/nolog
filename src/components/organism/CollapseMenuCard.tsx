@@ -7,16 +7,18 @@ const CollapseMenuCard = ({
   isOpen,
   isLast,
   onClickCollapseMenu,
+  children,
 }: any) => {
   const variants = {
-    open: { flex: 5 },
+    open: { flex: 5, padding: "50px" },
     closed: {
       flex: 1,
+      padding: "0px",
     },
   };
 
   const body_variants = {
-    open: { display: "block", opacity: 1 },
+    open: { display: "block", opacity: 1, transition: { duration: 2 } },
     closed: { display: "none", opacity: 0 },
   };
 
@@ -24,6 +26,7 @@ const CollapseMenuCard = ({
     open: { height: "80px" },
     closed: { height: "20px" },
   };
+
   return (
     <motion.div
       id={String(idx)}
@@ -31,11 +34,9 @@ const CollapseMenuCard = ({
       animate={isOpen ? "open" : "closed"}
       style={{
         display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
+        alignItems: `${isOpen ? "flex-start" : "center"}`,
         fontSize: "1.8rem",
         fontWeight: "500",
-
         overflow: "hidden",
         cursor: `${isOpen ? "default" : "pointer"}`,
         writingMode: `${isOpen ? "horizontal-tb" : "vertical-rl"}`,
@@ -43,21 +44,23 @@ const CollapseMenuCard = ({
       }}
       onClick={onClickCollapseMenu}
     >
-      <div id={String(idx)}>
+      <div
+        id={String(idx)}
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+          alignItems: `${isOpen ? "flex-start" : "center"}`,
+          height: "100%",
+          // padding: `${isOpen ? "50px" : "0px"}`,
+        }}
+      >
         {category}
         <motion.div
           variants={body_variants}
           animate={isOpen ? "open" : "closed"}
         >
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of type and
-          scrambled it to make a type specimen book. It has survived not only
-          five centuries, but also the leap into electronic typesetting,
-          remaining essentially unchanged. It was popularised in the 1960s with
-          the release of Letraset sheets containing Lorem Ipsum passages, and
-          more recently with desktop publishing software like Aldus PageMaker
-          including versions of Lorem Ipsum.
+          {children}
         </motion.div>
       </div>
     </motion.div>

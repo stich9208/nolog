@@ -3,9 +3,9 @@ import React from "react";
 
 import NText from "./NText";
 
-const NParagraph = ({ value }: any) => {
+const NParagraph = ({ value, style }: any) => {
   return (
-    <Text fontSize={["sm", "md"]} lineHeight="190%" mb="2">
+    <Text fontSize={["sm", "md"]} lineHeight="190%" mb="2" style={...style}>
       <NText text={value.rich_text} />
     </Text>
   );

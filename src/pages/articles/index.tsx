@@ -6,7 +6,7 @@ import React, { MouseEvent, useEffect } from "react";
 import { useSetRecoilState } from "recoil";
 import { v4 as uuidv4 } from "uuid";
 
-import ListView from "../../components/molecule/ListView";
+import ListView from "../../components/organism/ListView";
 import { articleListState } from "../../recoil/atom";
 import { getDatabases } from "../../util/controller";
 

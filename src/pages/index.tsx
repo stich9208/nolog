@@ -5,19 +5,18 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 
+import ArticleCard from "../components/molecule/ArticleCard";
+import ResumeCard from "../components/molecule/ResumeCard";
 import MotionCollapseMenuCard from "../components/organism/CollapseMenuCard";
 
 const Home: NextPage = () => {
   const router = useRouter();
   //constant state
   const WELCOME_TEXT_LIST = [
-    // "안녕하세요, 프론트엔드 개발자 정재욱입니다",
-    // "HELLO, I`M JAEWOOK JUNG, FRONTEND DEVELOPER",
-    "hi",
-    "hello",
-    "안녕",
+    "안녕하세요, 프론트엔드 개발자 정재욱입니다",
+    "HELLO, I`M JAEWOOK JUNG, FRONTEND DEVELOPER",
   ];
-  const CATEGORY_LIST = ["RESUME", "ARTICLES", "PROJECTS", "OTHER", "CONTACT"];
+  const CATEGORY_LIST = ["RESUME", "PROJECTS", "ARTICLES", "OTHER", "CONTACT"];
   const callback = useRef(() => {});
 
   //component state
@@ -40,22 +39,6 @@ const Home: NextPage = () => {
     setCollapseIndex(Number(id));
   };
 
-  const variants = {
-    open: { flex: 5 },
-    closed: {
-      flex: 1,
-    },
-  };
-  const mobile_variants = {
-    open: { height: "80px" },
-    closed: { height: "20px" },
-  };
-
-  const body_variants = {
-    open: { display: "block", opacity: 1 },
-    closed: { display: "none", opacity: 0 },
-  };
-
   return (
     <Box display="flex" w="100vw" justifyContent="center">
       <Head>
@@ -76,7 +59,6 @@ const Home: NextPage = () => {
             textAlign: "center",
             whiteSpace: "pre-wrap",
             wordBreak: "break-word",
-            transform: "scale(1, 1.5)",
           }}
         >
           <motion.div
@@ -109,7 +91,9 @@ const Home: NextPage = () => {
               isOpen={collapseIndex === idx}
               isLast={idx === CATEGORY_LIST.length - 1}
               onClickCollapseMenu={onClickCollapseMenu}
-            />
+            >
+              {<ArticleCard />}
+            </MotionCollapseMenuCard>
           ))}
         </Box>
         {/* <div onClick={() => router.push("/resume")}>

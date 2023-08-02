@@ -11,6 +11,7 @@ const NQuote = ({ value, id }: any) => {
       backgroundColor="orange.100"
       borderColor="orange.500"
       opacity="0.7"
+      mb="3"
     >
       <NParagraph value={value} style={{ marginBottom: "0px" }} />
     </Alert>
