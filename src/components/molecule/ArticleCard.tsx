@@ -2,6 +2,7 @@ import { Box, Button, Text } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import React from "react";
 
+import Svg from "../common/Svg";
 const ArticleCard = () => {
   const router = useRouter();
   return (

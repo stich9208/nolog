@@ -6,17 +6,26 @@ import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 
 import ArticleCard from "../components/molecule/ArticleCard";
+import ContactCard from "../components/molecule/ContactCard";
+import OtherCard from "../components/molecule/OtherCard";
+import ProjectCard from "../components/molecule/ProjectCard";
 import ResumeCard from "../components/molecule/ResumeCard";
 import MotionCollapseMenuCard from "../components/organism/CollapseMenuCard";
 
+const WELCOME_TEXT_LIST = [
+  "안녕하세요, 프론트엔드 개발자 정재욱입니다",
+  "HELLO, I`M JAEWOOK JUNG, FRONTEND DEVELOPER",
+];
+const CATEGORY_LIST = [
+  { name: "RESUME", card: <ResumeCard /> },
+  { name: "PROJECTS", card: <ProjectCard /> },
+  { name: "ARTICLES", card: <ArticleCard /> },
+  { name: "OTHER", card: <OtherCard /> },
+  { name: "CONTACT", card: <ContactCard /> },
+];
 const Home: NextPage = () => {
   const router = useRouter();
-  //constant state
-  const WELCOME_TEXT_LIST = [
-    "안녕하세요, 프론트엔드 개발자 정재욱입니다",
-    "HELLO, I`M JAEWOOK JUNG, FRONTEND DEVELOPER",
-  ];
-  const CATEGORY_LIST = ["RESUME", "PROJECTS", "ARTICLES", "OTHER", "CONTACT"];
+
   const callback = useRef(() => {});
 
   //component state
@@ -87,31 +96,15 @@ const Home: NextPage = () => {
             <MotionCollapseMenuCard
               key={idx}
               idx={idx}
-              category={category}
+              category={category.name}
               isOpen={collapseIndex === idx}
               isLast={idx === CATEGORY_LIST.length - 1}
               onClickCollapseMenu={onClickCollapseMenu}
             >
-              {<ArticleCard />}
+              {category.card}
             </MotionCollapseMenuCard>
           ))}
         </Box>
-        {/* <div onClick={() => router.push("/resume")}>
-          <div>RESUME</div>
-        </div>
-        <div onClick={() => router.push("/articles")}>
-          <div>ARTICLES</div>
-        </div>
-
-        <div onClick={() => router.push("/projects")}>
-          <div>PROJECTS</div>
-        </div>
-        <div>
-          <div>OTHER</div>
-        </div>
-        <div>
-          <div>CONTACT</div>
-        </div> */}
       </Flex>
     </Box>
   );

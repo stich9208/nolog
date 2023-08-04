@@ -52,6 +52,7 @@ const CollapseMenuCard = ({
           justifyContent: "space-between",
           alignItems: `${isOpen ? "flex-start" : "center"}`,
           height: "100%",
+          position: "relative",
           // padding: `${isOpen ? "50px" : "0px"}`,
         }}
       >
