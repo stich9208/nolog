@@ -70,7 +70,7 @@ const Articles = ({ articleList }: any) => {
         const createdDate = new Date(elem);
         return (
           <Text
-            fontWeight="400"
+            fontWeight="500"
             key={uuidv4()}
             w="full"
             fontSize="xs"

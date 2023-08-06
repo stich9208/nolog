@@ -60,6 +60,7 @@ const CollapseMenuCard = ({
         <motion.div
           variants={body_variants}
           animate={isOpen ? "open" : "closed"}
+          style={{ fontWeight: "400" }}
         >
           {children}
         </motion.div>

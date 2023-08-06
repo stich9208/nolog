@@ -24,8 +24,6 @@ const CATEGORY_LIST = [
   { name: "CONTACT", card: <ContactCard /> },
 ];
 const Home: NextPage = () => {
-  const router = useRouter();
-
   const callback = useRef(() => {});
 
   //component state

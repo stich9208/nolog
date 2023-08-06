@@ -7,7 +7,7 @@ const ResumeCard = () => {
   return (
     <Box>
       <Text>지금까지의 이력을 정리한 페이지입니다.</Text>
-      <Button onClick={() => router.push("/resume")}>gogo</Button>
+      <Button onClick={() => router.push("/resume")}>GO</Button>
     </Box>
   );
 };

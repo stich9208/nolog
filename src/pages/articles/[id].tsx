@@ -8,7 +8,6 @@ import { getBlocks, getDatabases } from "../../util/controller";
 const ArticleDetail = ({ article }: any) => {
   // component state
   const [numberedListMap, setNumberedListMap] = useState<any>();
-  console.log(article);
 
   useEffect(() => {
     let count = 0;
