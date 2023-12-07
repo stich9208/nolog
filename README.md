@@ -1,4 +1,4 @@
-# J2W`s Blog / Portfoio web site with notion api
+# Jaewook Jung`s Blog / Portfoio web site with notion api
 
 ## Stack
 

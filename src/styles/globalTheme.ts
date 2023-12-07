@@ -1,4 +1,4 @@
-import { extendTheme } from "@chakra-ui/react";
+import { defineStyleConfig, extendTheme } from "@chakra-ui/react";
 
 const globalTheme = extendTheme({
   components: {

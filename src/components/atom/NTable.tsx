@@ -45,13 +45,18 @@ const NTable = ({ value }: any) => {
                   <Tr key={uuidv4()}>
                     {child.table_row.cells.map((cell: any, idx: number) => {
                       return has_row_header && idx === 0 ? (
-                        <Th key={uuidv4()}>
+                        <Th
+                          key={uuidv4()}
+                          borderColor="gray.400"
+                          verticalAlign="middle"
+                        >
                           {cell.map((cellText: any) => cellText.plain_text)}
                         </Th>
                       ) : (
                         <Td
                           key={uuidv4()}
                           py="1"
+                          verticalAlign="middle"
                           borderColor="gray.400"
                           borderRight={
                             idx === child.table_row.cells.length - 1
@@ -74,9 +79,18 @@ const NTable = ({ value }: any) => {
             {value.children.map((child: any, idx: number) => {
               return (
                 <Tr key={uuidv4()}>
-                  {child.table_row.cells.map((cell: any) => {
+                  {child.table_row.cells.map((cell: any, idx: number) => {
                     return (
-                      <Td key={uuidv4()} py="1">
+                      <Td
+                        key={uuidv4()}
+                        py="1"
+                        borderColor="gray.400"
+                        borderRight={
+                          idx === child.table_row.cells.length - 1
+                            ? "none"
+                            : "1px solid #A0AEC0"
+                        }
+                      >
                         {cell.map((cellText: any) => cellText.plain_text)}
                       </Td>
                     );
