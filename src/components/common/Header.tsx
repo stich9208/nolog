@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 
-const PAGE_LIST = ["ARTICLES", "PROJECTS", "RESUME", "OTHER", "CONTACT"];
+const PAGE_LIST = ["HOME", "ARTICLES", "PROJECTS", "RESUME"];
 
 const Header = () => {
   const router = useRouter();
@@ -13,19 +13,13 @@ const Header = () => {
   useEffect(() => {
     switch (router.pathname) {
       case "/articles":
-        setTabIndex(1);
-        break;
-      case "/projects":
         setTabIndex(2);
         break;
-      case "/resume":
+      case "/projects":
         setTabIndex(3);
         break;
-      case "/other":
+      case "/resume":
         setTabIndex(4);
-        break;
-      case "/contact":
-        setTabIndex(5);
         break;
       default:
         setTabIndex(1);
@@ -59,12 +53,11 @@ const Header = () => {
       >
         {PAGE_LIST.map((page, idx) => (
           <Link
-            href={`/${page.toLocaleLowerCase()}`}
+            href={page === "HOME" ? "/" : `/${page.toLocaleLowerCase()}`}
             key={`/${page}`}
             style={{ width: "100%", height: "100%" }}
           >
             <Box
-              // name={page.toLowerCase()}
               display="flex"
               justifyContent="center"
               alignItems="center"

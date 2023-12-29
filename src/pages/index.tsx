@@ -1,15 +1,11 @@
-import { Box, Flex } from "@chakra-ui/react";
+import { Box, Button, Flex } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import type { NextPage } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 
-import ArticleCard from "../components/molecule/ArticleCard";
-import ContactCard from "../components/molecule/ContactCard";
-import OtherCard from "../components/molecule/OtherCard";
-import ProjectCard from "../components/molecule/ProjectCard";
-import ResumeCard from "../components/molecule/ResumeCard";
+import MainCard from "../components/molecule/MainCard";
 import MotionCollapseMenuCard from "../components/organism/CollapseMenuCard";
 
 const WELCOME_TEXT_LIST = [
@@ -17,12 +13,12 @@ const WELCOME_TEXT_LIST = [
   "HELLO, I`M JAEWOOK JUNG, FRONTEND DEVELOPER",
 ];
 const CATEGORY_LIST = [
-  { name: "RESUME", card: <ResumeCard /> },
-  { name: "PROJECTS", card: <ProjectCard /> },
-  { name: "ARTICLES", card: <ArticleCard /> },
-  { name: "OTHER", card: <OtherCard /> },
-  { name: "CONTACT", card: <ContactCard /> },
+  { name: "RESUME", src: "resume.png" },
+  { name: "PROJECTS", src: "project.png" },
+  { name: "ARTICLES", src: "articles.png" },
+  { name: "CONTACT", src: "contact.png" },
 ];
+
 const Home: NextPage = () => {
   const callback = useRef(() => {});
 
@@ -34,6 +30,7 @@ const Home: NextPage = () => {
   useEffect(() => {
     const textCountCallback = callback.current;
     const interval = setInterval(textCountCallback, 7000);
+
     return () => clearInterval(interval);
   }, []);
 
@@ -94,13 +91,11 @@ const Home: NextPage = () => {
             <MotionCollapseMenuCard
               key={idx}
               idx={idx}
-              category={category.name}
+              name={category.name}
               isOpen={collapseIndex === idx}
               isLast={idx === CATEGORY_LIST.length - 1}
               onClickCollapseMenu={onClickCollapseMenu}
-            >
-              {category.card}
-            </MotionCollapseMenuCard>
+            />
           ))}
         </Box>
       </Flex>
